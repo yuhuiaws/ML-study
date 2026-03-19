@@ -7,3 +7,19 @@ GPU Infra as Claude code skills
 4. sglang-2p2d-ucclep-nixl.skill ------- 这个skill使用2P2D部署，两种方式：一种是2个P之间单独独立（不需要通信），2个D之间使用UCCL-EP来做all2all通信；另一种是2个P之间使用UCCL-EP来做all2all通信，2个D之间也使用UCCL-EP来做all2all通信。
 5. sglang-single-node-kimi25.skill ------ 这个skill使用单节点对Kimi2.5进行了一些SGLang的benchmark实验。
 6. sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
+
+
+* 小结（对于当前这个测试场景和已测试过的方案）：
+    * 用单机部署性能最好，性价比最高。
+        *  1-node EP8 TP8 — 仅 1 台机器就能达到 687 tok/s，TPOT 12ms。
+        * 注意：那是不是针对这个测试workload，就一定是单机部署性价比最好？
+            * 不一定。因为我们并没有穷尽的去测试XPXD的情况。
+    * 对于2台节点部署的方案，综合性能最好的是 1P1D + NIXL Libfabric backend + NCCL。
+    * 对于4节点部署的方案，2P2D + UCCL-EP的方式要好于2P2D + NCCL的方式。
+        * UCCL-EP/DeepEP都是和PD分离配合起来才能更好的发挥作用。
+    * 对于4节点部署的2P2D方案，方案（2P是单独的，2D之间使用UCCL-EP low latency mode ）比方案（2P之间使用UCCL-EP normal mode，2D之间使用UCCL-EP low latency mode）更好。
+        * 这个也和蚂蚁金服针对deepseek-v3使用4台H20建议的部署方案是一致的结论。
+            * 独立 prefill（TP=8 单节点）+ flashmla decode 是 2P2D 的最优架构，避免 prefill 跨节点通信开销，并利用 flashmla 优化 MLA decode。
+        * 2P2D，P之间单独部署，D之间使用UCCL-EP，参数配置基本和蚂蚁(https://github.com/antgroup/sglang/pull/4)的一个建议类似：
+            * 区别：disable prefix cache，没有使用speculative相关参数，使用的是H200 GPU，使用的EFA和UCCL-EP。
+
