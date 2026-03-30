@@ -7,6 +7,7 @@ GPU Infra as Claude code skills
    * 4. sglang-2p2d-ucclep-nixl.skill ------- 这个skill使用2P2D部署，两种方式：一种是2个P之间单独独立（不需要通信），2个D之间使用UCCL-EP来做all2all通信；另一种是2个P之间使用UCCL-EP来做all2all通信，2个D之间也使用UCCL-EP来做all2all通信。
    * 5. sglang-single-node-kimi25.skill ------ 这个skill使用单节点对Kimi2.5进行了一些SGLang的benchmark实验。
    * 6. sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
+   * 7. ec2-g7e-docker-sglang-2p2d.skill ------ 这个skill是在AWS GPU EC2 G7e.48xlarge 实例上，基于docker container做4节点2P2D部署。
 
 
 * 小结（对于当前这个测试场景和已测试过的方案）：
