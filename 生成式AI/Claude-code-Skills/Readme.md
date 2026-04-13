@@ -9,6 +9,7 @@ GPU Infra as Claude code skills
    * 6. sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
    * 7. ec2-g7e-docker-sglang-2p2d.skill ------ 这个skill是在AWS GPU EC2 G7e.48xlarge 实例上，基于docker container做4节点2P2D部署。
    * 8. eks-h200-gpu.skill ---- 这个skill是创建AWS EKS集群，并创建H200 GPU实例的node group，并跑一个简单的kubeflow pytorch training job。
+   * 9. sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
 
 
 * 小结（对于当前这个测试场景和已测试过的方案）：
