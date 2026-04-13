@@ -12,7 +12,7 @@ GPU Infra as Claude code skills
    * 9. sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
 
 
-* 小结（对于当前这个测试场景和已测试过的方案）：
+* 小结 for Deepseek-v3（对于当前这个测试场景和已测试过的方案）：
     * 用单机部署性能最好，性价比最高。
         *  1-node EP8 TP8 — 仅 1 台机器就能达到 687 tok/s，TPOT 12ms。
         * 注意：那是不是针对这个测试workload，就一定是单机部署性价比最好？
