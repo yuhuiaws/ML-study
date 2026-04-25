@@ -11,6 +11,7 @@ GPU Infra as Claude code skills
    * 8. eks-h200-gpu.skill ---- 这个skill是创建AWS EKS集群，并创建H200 GPU实例的node group，并跑一个简单的kubeflow pytorch training job。
    * 9. sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
    * 10. eks-b300-gpu.skill ----- 这个skill是在已有的eks集群中使用b300实例来做2节点部署deepseek-v3的，包括1P1D（TP8 EP8，使用NIXL KV transfer）, Non PD（TP16 EP16）的部署方案，以及Nccl-test allreduce和all2all的测试。
+   * 11. eks-b200.skill ----- EKS + p6-b200.48xlarge 集群搭建与 DeepSeek-V3 671B FP8 推理部署（SGLang PD disaggregation 1P1D/2P1D/2P2D/1P2D，nixl LIBFABRIC over EFA RDMA），含 NCCL 测试、PyTorchJob 分布式训练及 13 个已知问题排障。
 
 
 * 小结 for Deepseek-v3（对于当前这个测试场景和已测试过的方案）：
