@@ -12,8 +12,9 @@ GPU Infra as Claude code skills
    * 9. sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
    * 10. eks-b300-gpu.skill ----- 这个skill是在已有的eks集群中使用b300实例来做2节点部署deepseek-v3的，包括1P1D（TP8 EP8，使用NIXL KV transfer）, Non PD（TP16 EP16）的部署方案，以及Nccl-test allreduce和all2all的测试。
    * 11. eks-b200.skill ----- EKS + p6-b200.48xlarge 集群搭建与 DeepSeek-V3 671B FP8 推理部署（SGLang PD disaggregation 1P1D/2P1D/2P2D/1P2D，nixl LIBFABRIC over EFA RDMA），含 NCCL 测试、PyTorchJob 分布式训练及 13 个已知问题排障。
-
-
+   * 12. eks-h200-megatron-qwen3-235b-a22b.skill ----- 这个skill是在EKS HyperPod H200集群上使用Megatron-LM对Qwen3-235B-A22B（MoE, 128 experts, top-8）进行分布式训练。覆盖完整pipeline：HF模型下载、megatron-bridge checkpoint转换、训练数据准备、4节点32 GPU 5D并行训练（TP/PP/CP/EP/DP）。包含PlanD（TP4/PP1/CP8/EP32）和PlanE（TP4/PP2/CP2/EP16/DP2）两种并行方案，以及UCCL-EP flex vs NCCL alltoall dispatcher的性能对比（UCCL-EP在PlanE上有+12.7%吞吐优势，PlanD上+7.7%）。
+    
+  
 * 小结 for Deepseek-v3（对于当前这个测试场景和已测试过的方案）：
     * 用单机部署性能最好，性价比最高。
         *  1-node EP8 TP8 — 仅 1 台机器就能达到 687 tok/s，TPOT 12ms。
@@ -27,5 +28,5 @@ GPU Infra as Claude code skills
             * 独立 prefill（TP=8 单节点）+ flashmla decode 是 2P2D 的最优架构，避免 prefill 跨节点通信开销，并利用 flashmla 优化 MLA decode。
         * 2P2D，P之间单独部署，D之间使用UCCL-EP，参数配置基本和蚂蚁(https://github.com/antgroup/sglang/pull/4)的一个建议类似：
             * 区别：disable prefix cache，没有使用speculative相关参数，使用的是H200 GPU，使用的EFA和UCCL-EP。
-   * 12. eks-h200-megatron-qwen3-235b-a22b.skill ----- 这个skill是在EKS HyperPod H200集群上使用Megatron-LM对Qwen3-235B-A22B（MoE, 128 experts, top-8）进行分布式训练。覆盖完整pipeline：HF模型下载、megatron-bridge checkpoint转换、训练数据准备、4节点32 GPU 5D并行训练（TP/PP/CP/EP/DP）。包含PlanD（TP4/PP1/CP8/EP32）和PlanE（TP4/PP2/CP2/EP16/DP2）两种并行方案，以及UCCL-EP flex vs NCCL alltoall dispatcher的性能对比（UCCL-EP在PlanE上有+12.7%吞吐优势，PlanD上+7.7%）。
+   
 
