@@ -2,17 +2,17 @@ GPU Infra as Claude code skills
 
 * 当前这里提供了几个打包的skill：
    * sglang-deepseek-non-PD.skill ------ 这个skill使用Non-PD部署方式，针对Deepseek-v3 FP8模型，使用单节点部署，2节点部署进行了实验。2节点部署使用了基于NCCL的，以及基于UCCL-EP的方式（使用Non-PD的uccl-ep方式来主要是做一下对比实验）。
-   * 2. sglang-deepseek-1p1d.skill ------ 这个skill使用1P1D部署方式，使用NIXL KV transfer engine的两个不同backend即libfabric backend和ucx backend来对比。
-   * 3. sglang-2p2d-nccl-nixl.skill ------- 这个skill使用2P2D部署方式，严格说是4台GUP实例，2个P之间通过NCCL通信，2个D之间通过NCCL通信。
-   * 4. sglang-2p2d-ucclep-nixl.skill ------- 这个skill使用2P2D部署，两种方式：一种是2个P之间单独独立（不需要通信），2个D之间使用UCCL-EP来做all2all通信；另一种是2个P之间使用UCCL-EP来做all2all通信，2个D之间也使用UCCL-EP来做all2all通信。
-   * 5. sglang-single-node-kimi25.skill ------ 这个skill使用单节点对Kimi2.5进行了一些SGLang的benchmark实验。
-   * 6. sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
-   * 7. ec2-g7e-docker-sglang-2p2d.skill ------ 这个skill是在AWS GPU EC2 G7e.48xlarge 实例上，基于docker container做4节点2P2D部署。
-   * 8. eks-h200-gpu.skill ---- 这个skill是创建AWS EKS集群，并创建H200 GPU实例的node group，并跑一个简单的kubeflow pytorch training job。
-   * 9. sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
-   * 10. eks-b300-gpu.skill ----- 这个skill是在已有的eks集群中使用b300实例来做2节点部署deepseek-v3的，包括1P1D（TP8 EP8，使用NIXL KV transfer）, Non PD（TP16 EP16）的部署方案，以及Nccl-test allreduce和all2all的测试。
-   * 11. eks-b200.skill ----- EKS + p6-b200.48xlarge 集群搭建与 DeepSeek-V3 671B FP8 推理部署（SGLang PD disaggregation 1P1D/2P1D/2P2D/1P2D，nixl LIBFABRIC over EFA RDMA），含 NCCL 测试、PyTorchJob 分布式训练及 13 个已知问题排障。
-   * 12. eks-h200-megatron-qwen3-235b-a22b.skill ----- 这个skill是在EKS HyperPod H200集群上使用Megatron-LM对Qwen3-235B-A22B（MoE, 128 experts, top-8）进行分布式训练。覆盖完整pipeline：HF模型下载、megatron-bridge checkpoint转换、训练数据准备、4节点32 GPU 5D并行训练（TP/PP/CP/EP/DP）。包含PlanD（TP4/PP1/CP8/EP32，seqlen为64K）和PlanE（TP4/PP2/CP2/EP16/DP2，seqlen为20K）两种并行方案，以及UCCL-EP flex vs NCCL alltoall dispatcher的性能对比（UCCL-EP在PlanE上有+12.7%吞吐优势，PlanD上+7.7%; 针对planE EP16，如果seqlen是48K，UCCL-EP相对NCCL EP超过20%+的吞吐优势以及大概18%+的时间优势即iteration/s更短）。
+   * sglang-deepseek-1p1d.skill ------ 这个skill使用1P1D部署方式，使用NIXL KV transfer engine的两个不同backend即libfabric backend和ucx backend来对比。
+   * sglang-2p2d-nccl-nixl.skill ------- 这个skill使用2P2D部署方式，严格说是4台GUP实例，2个P之间通过NCCL通信，2个D之间通过NCCL通信。
+   * sglang-2p2d-ucclep-nixl.skill ------- 这个skill使用2P2D部署，两种方式：一种是2个P之间单独独立（不需要通信），2个D之间使用UCCL-EP来做all2all通信；另一种是2个P之间使用UCCL-EP来做all2all通信，2个D之间也使用UCCL-EP来做all2all通信。
+   * sglang-single-node-kimi25.skill ------ 这个skill使用单节点对Kimi2.5进行了一些SGLang的benchmark实验。
+   * sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
+   * ec2-g7e-docker-sglang-2p2d.skill ------ 这个skill是在AWS GPU EC2 G7e.48xlarge 实例上，基于docker container做4节点2P2D部署。
+   * eks-h200-gpu.skill ---- 这个skill是创建AWS EKS集群，并创建H200 GPU实例的node group，并跑一个简单的kubeflow pytorch training job。
+   * sglang-mimo-v2-flash.skill ---- 这个skill是借助Claude code在已有的AWS sagemaker hyperpod集群上部署mimo-v2-flash，包括单机部署和PD（1P1D）部署以及开启MTP的部署。PD部署使用的NIXL libfabric backend做KV transfer，方案基于SGLang比较旧的版本0.5.6.post2打了很多patch，patch在skill中的python脚本中。
+   * eks-b300-gpu.skill ----- 这个skill是在已有的eks集群中使用b300实例来做2节点部署deepseek-v3的，包括1P1D（TP8 EP8，使用NIXL KV transfer）, Non PD（TP16 EP16）的部署方案，以及Nccl-test allreduce和all2all的测试。
+   * eks-b200.skill ----- EKS + p6-b200.48xlarge 集群搭建与 DeepSeek-V3 671B FP8 推理部署（SGLang PD disaggregation 1P1D/2P1D/2P2D/1P2D，nixl LIBFABRIC over EFA RDMA），含 NCCL 测试、PyTorchJob 分布式训练及 13 个已知问题排障。
+   * eks-h200-megatron-qwen3-235b-a22b.skill ----- 这个skill是在EKS HyperPod H200集群上使用Megatron-LM对Qwen3-235B-A22B（MoE, 128 experts, top-8）进行分布式训练。覆盖完整pipeline：HF模型下载、megatron-bridge checkpoint转换、训练数据准备、4节点32 GPU 5D并行训练（TP/PP/CP/EP/DP）。包含PlanD（TP4/PP1/CP8/EP32，seqlen为64K）和PlanE（TP4/PP2/CP2/EP16/DP2，seqlen为20K）两种并行方案，以及UCCL-EP flex vs NCCL alltoall dispatcher的性能对比（UCCL-EP在PlanE上有+12.7%吞吐优势，PlanD上+7.7%; 针对planE EP16，如果seqlen是48K，UCCL-EP相对NCCL EP超过20%+的吞吐优势以及大概18%+的时间优势即iteration/s更短）。
     
   
 * 小结 for Deepseek-v3（对于当前这个测试场景和已测试过的方案）：
