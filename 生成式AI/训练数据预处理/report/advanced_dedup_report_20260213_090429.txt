@@ -1,0 +1,33 @@
+============================================================
+  Advanced Dedup LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_090429
+Input     : /tmp/tmpucx0j6od/in.jsonl
+Output    : /tmp/tmpucx0j6od/out.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 0
+  Final kept      : 0
+  Total removed   : 0
+  Dedup rate      : 0.0%
+
+----------------------------------------
+  Configuration
+----------------------------------------
+  Scoring method          : heuristic
+  Embed model             : cohere.embed-multilingual-v3
+  Judge model             : us.anthropic.claude-opus-4-6-v1
+  Full-sample threshold   : 0.85
+  Input threshold         : 0.7
+  Multi-turn weight mode  : linear_increasing
+
+----------------------------------------
+  Per-Stage Breakdown
+----------------------------------------
+
+============================================================
+  End of Report
+============================================================

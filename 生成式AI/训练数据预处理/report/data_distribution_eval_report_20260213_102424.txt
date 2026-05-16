@@ -1,0 +1,75 @@
+Timestamp : 20260213_102424
+Input     : zh_mixed_samples.jsonl
+
+======================================================================
+  数据分布评估报告
+======================================================================
+
+总样本数: 100
+
+--- 语言分布 ---
+  中文: 50 (50.0%)
+  中英混合: 50 (50.0%)
+
+--- 任务类型分布 ---
+  多轮闲聊: 71 (71.0%)
+  角色扮演: 13 (13.0%)
+  QA问答: 13 (13.0%)
+  知识问答: 2 (2.0%)
+  代码生成: 1 (1.0%)
+  多轮对话占比: 91.0%
+
+--- 难度分布 ---
+  低: 79 (79.0%)
+  中: 21 (21.0%)
+
+--- 长度类别分布 (短≤200, 中, 长≥1000 字符) ---
+  短: 73 (73.0%)
+  中: 27 (27.0%)
+
+--- 长度分布 (字符) ---
+  input: mean=39, min=8, max=91, P10=19, P25=26, P50=32, P75=51, P90=65, P99=88
+  output: mean=113, min=31, max=213, P10=59, P25=78, P50=102, P75=153, P90=185, P99=210
+  total: mean=153, min=40, max=286, P10=83, P25=106, P50=136, P75=204, P90=234, P99=279
+
+--- 4D 交叉分布 (language×task_type×length_category×difficulty) ---
+  非零组合数: 16
+  Top-10 组合:
+    中文 × 多轮闲聊 × 短 × 低: 34
+    中英混合 × 多轮闲聊 × 短 × 低: 17
+    中文 × 角色扮演 × 短 × 低: 11
+    中英混合 × 多轮闲聊 × 中 × 低: 11
+    中英混合 × 多轮闲聊 × 中 × 中: 7
+    中英混合 × QA问答 × 中 × 中: 7
+    中文 × QA问答 × 短 × 低: 2
+    中英混合 × 角色扮演 × 短 × 低: 2
+    中英混合 × QA问答 × 短 × 中: 2
+    中文 × 多轮闲聊 × 短 × 中: 1
+  稀疏组合 (低于阈值): 16
+
+--- 告警 (12 条) ---
+  [WARNING] [task] 任务类型 '多轮闲聊' 占比过高: 71.0% (>50.0%). 分布偏斜，建议下采样或补充其他类型。
+  [WARNING] [task] 任务类型 '多轮闲聊' 样本不足: 数量=71 (<2000). 建议补充数据。
+  [WARNING] [task] 任务类型 '角色扮演' 样本不足: 数量=13 (<2000). 建议补充数据。
+  [WARNING] [task] 任务类型 'QA问答' 样本不足: 数量=13 (<2000). 建议补充数据。
+  [WARNING] [task] 任务类型 '知识问答' 样本不足: 数量=2 (<2000). 建议补充数据。
+  [WARNING] [task] 任务类型 '代码生成' 样本不足: 数量=1 (<2000). 建议补充数据。
+  [WARNING] [difficulty] 难度 '低' 占比过高: 实际=79.0%, 目标=30.0%, 偏差=49.0% (>15.0%). 
+  [WARNING] [difficulty] 难度 '中' 占比过低: 实际=21.0%, 目标=50.0%, 偏差=29.0% (>15.0%). 
+  [WARNING] [difficulty] 难度 '高' 占比过低: 实际=0.0%, 目标=20.0%, 偏差=20.0% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '短' 占比过高: 实际=73.0%, 目标=25.0%, 偏差=48.0% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '中' 占比过低: 实际=27.0%, 目标=50.0%, 偏差=23.0% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '长' 占比过低: 实际=0.0%, 目标=25.0%, 偏差=25.0% (>15.0%). 
+
+--- 提示 (16 条) ---
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='多轮闲聊' × length_category='短' × difficulty='低' 样本稀疏: 数量=34 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='多轮闲聊' × length_category='短' × difficulty='低' 样本稀疏: 数量=17 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='角色扮演' × length_category='短' × difficulty='低' 样本稀疏: 数量=11 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='多轮闲聊' × length_category='中' × difficulty='低' 样本稀疏: 数量=11 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='多轮闲聊' × length_category='中' × difficulty='中' 样本稀疏: 数量=7 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='QA问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=7 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='QA问答' × length_category='短' × difficulty='低' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='角色扮演' × length_category='短' × difficulty='低' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='QA问答' × length_category='短' × difficulty='中' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='多轮闲聊' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。
+  ... 还有 6 条提示

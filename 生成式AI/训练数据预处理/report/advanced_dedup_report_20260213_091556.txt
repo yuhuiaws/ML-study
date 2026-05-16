@@ -1,0 +1,370 @@
+============================================================
+  Advanced Dedup LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_091556
+Input     : test_multiturn_duplicates.jsonl
+Output    : ./zh_mixed_advanced_deduped.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 33
+  Final kept      : 4
+  Total removed   : 29
+  Dedup rate      : 87.9%
+
+----------------------------------------
+  Configuration
+----------------------------------------
+  Scoring method          : llm
+  Embed model             : cohere.embed-multilingual-v3
+  Judge model             : us.anthropic.claude-opus-4-6-v1
+  Full-sample threshold   : 0.85
+  Input threshold         : 0.7
+  Multi-turn weight mode  : linear_increasing
+
+----------------------------------------
+  Per-Stage Breakdown
+----------------------------------------
+
+  [full_sample_embedding_dedup]
+    Method description : Cohere Embed Multilingual v3 full-text embedding dedup: concatenate all message texts per conversation, embed via Bedrock Cohere, cluster by cosine similarity (threshold >= 0.85), keep best-scored per cluster. Duplicate reason: semantically similar full conversations.
+    Input count        : 33
+    Output count       : 18
+    Duplicate groups   : 8
+    Removed            : 15
+
+  [input_embedding_dedup]
+    Method description : Cohere Embed Multilingual v3 input-only embedding dedup: embed only user turns, cluster by cosine similarity (threshold >= 0.7), evaluate output quality via llm, keep best answer per cluster. Duplicate reason: semantically similar user inputs with different quality answers.
+    Input count        : 18
+    Output count       : 4
+    Duplicate groups   : 1
+    Removed            : 14
+
+----------------------------------------
+  Duplicate Group Details
+----------------------------------------
+
+  [full_sample_dedup] Group #1 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [0, 6, 21]
+    Scores           : idx0=7.9, idx6=7.0, idx21=7.6
+    Kept index       : 0
+    Removed indices  : [6, 21]
+    Text preview     : 微服务架构和单体架构相比有什么优势？
+微服务架构相比单体架构的优势:
+1. 独立部署: 每个服务可以单独发布,不影响其他服务
+2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈
+3. 可扩展性: 可以针对热点服务单独扩容
+4. 故障隔离: 一个服务故障不会导致整个系统崩溃
+微服务有什么缺点吗？
+微服务的主要挑战:
+1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理
+2. 数据一致...
+    Conversation preview:
+      user: 微服务架构和单体架构相比有什么优势？
+      assistant: 微服务架构相比单体架构的优势:
+1. 独立部署: 每个服务可以单独发布,不影响其他服务
+2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈
+3. 可扩展性: 可以针对热点服务单独扩容
+4. 故
+      user: 微服务有什么缺点吗？
+      assistant: 微服务的主要挑战:
+1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理
+2. 数据一致性: 跨服务的事务管理比单体困难得多
+3. 运维成本: 需要容器化、服务编排、日志聚合、链路追踪等基础设
+      user: 那什么时候应该选择微服务？
+      assistant: 选择微服务的时机:
+1. 团队规模较大(>10人): 多团队并行开发时,微服务能减少代码冲突
+2. 业务复杂度高: 不同业务模块有明显的边界
+3. 需要弹性扩缩: 某些模块流量大但其他模块不需要扩容
+
+
+  [full_sample_dedup] Group #2 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [1, 14, 22]
+    Scores           : idx1=7.48, idx14=7.58, idx22=7.58
+    Kept index       : 14
+    Removed indices  : [1, 22]
+    Text preview     : 如何设计一个好的数据库表结构？
+设计数据库表结构需要遵循以下原则:
+1. 确定实体和关系: 先画ER图,理清表之间的一对一、一对多、多对多关系
+2. 遵循范式: 至少达到第三范式,减少数据冗余
+3. 合理选择主键: 推荐使用自增ID或UUID
+4. 字段类型要精确: 比如金额用DECIMAL而不是FLOAT
+什么时候需要反范式设计？
+反范式适用于以下场景:
+1. 读多写少的情况: 为了减少JOIN...
+    Conversation preview:
+      user: 如何设计一个好的数据库表结构？
+      assistant: 设计数据库表结构需要遵循以下原则:
+1. 确定实体和关系: 先画ER图,理清表之间的一对一、一对多、多对多关系
+2. 遵循范式: 至少达到第三范式,减少数据冗余
+3. 合理选择主键: 推荐使用自增ID
+      user: 什么时候需要反范式设计？
+      assistant: 反范式适用于以下场景:
+1. 读多写少的情况: 为了减少JOIN操作,可以冗余存储常用字段
+2. 报表查询: 提前计算并存储汇总数据,避免实时聚合
+3. 高并发场景: 减少表关联可以降低锁竞争
+但要注
+      user: 索引应该怎么建？
+      assistant: 索引建立的原则:
+1. WHERE条件中频繁使用的列要建索引
+2. 联合索引遵循最左前缀原则
+3. 选择性高的列更适合建索引(如用户ID vs 性别)
+4. 避免过多索引,每个索引都会增加写入开销
+5
+
+  [full_sample_dedup] Group #3 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [2, 13, 25]
+    Scores           : idx2=7.07, idx13=6.79, idx25=7.3
+    Kept index       : 25
+    Removed indices  : [2, 13]
+    Text preview     : 如何用Docker部署一个Python Web应用？
+基本步骤:
+1. 编写Dockerfile
+2. 构建镜像: docker build -t myapp .
+3. 运行容器: docker run -p 8080:8080 myapp
+
+一个Flask应用的Dockerfile示例:
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.t...
+    Conversation preview:
+      user: 如何用Docker部署一个Python Web应用？
+      assistant: 基本步骤:
+1. 编写Dockerfile
+2. 构建镜像: docker build -t myapp .
+3. 运行容器: docker run -p 8080:8080 myapp
+
+一个Fla
+      user: 如何优化Docker镜像的大小？
+      assistant: 优化Docker镜像大小的技巧:
+1. 使用alpine或slim基础镜像
+2. 多阶段构建: 编译阶段和运行阶段分离
+3. 合并RUN指令减少层数
+4. 使用.dockerignore排除不需要的文
+      user: 如何用docker-compose管理多个容器？
+      assistant: docker-compose.yml示例:
+version: '3.8'
+services:
+  web:
+    build: .
+    ports: ['8080:8080']
+    depe
+      user: 如何实现容器的自动重启？
+      assistant: 容器自动重启策略:
+1. docker run --restart=always  # 总是重启
+2. docker run --restart=unless-stopped  # 除非手动停止
+3.
+
+  [full_sample_dedup] Group #4 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [4, 18, 26]
+    Scores           : idx4=8.08, idx18=8.07, idx26=8.07
+    Kept index       : 4
+    Removed indices  : [18, 26]
+    Text preview     : 我的Python代码运行时报了一个TypeError,怎么排查？
+TypeError通常是类型不匹配导致的。可以从以下几方面排查:
+1. 查看完整的错误堆栈,定位出错的行号
+2. 检查该行涉及的变量类型,用type()或isinstance()确认
+3. 常见原因:字符串和数字混合运算、None值参与运算、函数参数类型错误
+堆栈信息显示是在一个字典操作的地方出错了,提示 'unhashable t...
+    Conversation preview:
+      user: 我的Python代码运行时报了一个TypeError,怎么排查？
+      assistant: TypeError通常是类型不匹配导致的。可以从以下几方面排查:
+1. 查看完整的错误堆栈,定位出错的行号
+2. 检查该行涉及的变量类型,用type()或isinstance()确认
+3. 常见原因:
+      user: 堆栈信息显示是在一个字典操作的地方出错了,提示 'unhashable type: list'
+      assistant: 这个错误是因为你用了列表(list)作为字典的key。字典的key必须是可哈希的类型,比如字符串、数字、元组等。列表是可变对象,不能作为key。
+
+解决方案:
+1. 如果列表内容固定,转成元组: tu
+      user: 转成元组之后确实解决了,但是现在又报了KeyError
+      assistant: KeyError说明你访问的key在字典中不存在。几个排查方法:
+1. 用 dict.get(key, default) 代替 dict[key],避免报错
+2. 用 if key in dict 先
+
+  [full_sample_dedup] Group #5 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [5, 19, 27]
+    Scores           : idx5=7.8, idx19=7.73, idx27=7.8
+    Kept index       : 5
+    Removed indices  : [19, 27]
+    Text preview     : Python的async/await是怎么工作的？
+Python的异步编程基于事件循环(event loop):
+
+1. async def 定义协程函数
+2. await 挂起当前协程,等待异步操作完成
+3. 事件循环调度多个协程并发执行
+
+核心概念:
+- 协程(coroutine): async def定义的函数
+- 任务(task): asyncio.create_task()创建的可调度单...
+    Conversation preview:
+      user: Python的async/await是怎么工作的？
+      assistant: Python的异步编程基于事件循环(event loop):
+
+1. async def 定义协程函数
+2. await 挂起当前协程,等待异步操作完成
+3. 事件循环调度多个协程并发执行
+
+核心概念
+      user: 和多线程相比有什么区别？
+      assistant: 异步 vs 多线程:
+
+异步(asyncio):
+- 单线程,通过协程切换实现并发
+- 没有线程安全问题,不需要锁
+- 适合I/O密集型: 网络请求、文件读写
+- 不能利用多核CPU
+
+多线程(thr
+
+  [full_sample_dedup] Group #6 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [7, 8, 9]
+    Scores           : idx7=7.02, idx8=7.38, idx9=7.28
+    Kept index       : 8
+    Removed indices  : [7, 9]
+    Text preview     : 前端面试中经常会问到闭包,能详细解释一下吗？
+闭包是指一个函数能够访问其外部函数作用域中的变量,即使外部函数已经执行完毕。
+
+核心原理: JavaScript中函数创建时会保存对外部变量的引用,形成一个'封闭的环境'。
+
+经典例子:
+function counter() {
+  let count = 0;
+  return function() { return ++count; };
+}
+co...
+    Conversation preview:
+      user: 前端面试中经常会问到闭包,能详细解释一下吗？
+      assistant: 闭包是指一个函数能够访问其外部函数作用域中的变量,即使外部函数已经执行完毕。
+
+核心原理: JavaScript中函数创建时会保存对外部变量的引用,形成一个'封闭的环境'。
+
+经典例子:
+functi
+      user: 闭包有什么常见的应用场景？
+      assistant: 闭包的常见应用:
+1. 数据封装/私有变量: 模拟面向对象中的private
+2. 函数工厂: 根据参数生成定制化函数
+3. 回调函数: 事件处理中保持对上下文的引用
+4. 柯里化: 将多参数函数转换
+      user: 使用闭包对性能有影响吗？
+      assistant: 闭包对性能的影响:
+1. 内存占用: 闭包会保持对外部变量的引用,占用额外内存
+2. 创建开销: 每次创建闭包都会分配新的作用域链,比普通函数稍慢
+3. 垃圾回收延迟: 被闭包引用的变量不会被立即回收
+
+  [full_sample_dedup] Group #7 (3 members)
+    Scoring method   : LLM-judge
+    Member indices   : [16, 20, 23]
+    Scores           : idx16=7.45, idx20=7.45, idx23=7.45
+    Kept index       : 16
+    Removed indices  : [20, 23]
+    Text preview     : 什么是时间复杂度和空间复杂度？
+时间复杂度衡量算法执行所需的时间随输入规模增长的变化趋势,用大O表示法。
+空间复杂度衡量算法执行所需的额外内存空间。
+
+常见时间复杂度(从快到慢):
+O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n)
+能举一些具体算法的例子吗？
+各种复杂度的典型算法:
+- O(1): 数组按索引访问、哈希表查找
+- O(log ...
+    Conversation preview:
+      user: 什么是时间复杂度和空间复杂度？
+      assistant: 时间复杂度衡量算法执行所需的时间随输入规模增长的变化趋势,用大O表示法。
+空间复杂度衡量算法执行所需的额外内存空间。
+
+常见时间复杂度(从快到慢):
+O(1) < O(log n) < O(n) < 
+      user: 能举一些具体算法的例子吗？
+      assistant: 各种复杂度的典型算法:
+- O(1): 数组按索引访问、哈希表查找
+- O(log n): 二分查找、平衡二叉树操作
+- O(n): 线性搜索、遍历数组
+- O(n log n): 快速排序、归并排序
+      user: 实际开发中怎么分析代码的复杂度？
+      assistant: 分析复杂度的方法:
+1. 看循环嵌套: 单层循环O(n),双层嵌套O(n²)
+2. 递归用递推式: T(n) = 2T(n/2) + O(n) → O(n log n)
+3. 取最高项: O(n² +
+
+  [full_sample_dedup] Group #8 (2 members)
+    Scoring method   : LLM-judge
+    Member indices   : [29, 30]
+    Scores           : idx29=7.25, idx30=7.42
+    Kept index       : 30
+    Removed indices  : [29]
+    Text preview     : Git分支管理有什么好的实践？
+Git分支管理的最佳实践:
+1. 主分支保护: main/master分支设为受保护,只能通过PR合并
+2. 功能分支: 每个功能或修复使用独立的feature/fix分支
+3. 命名规范: feature/xxx, bugfix/xxx, hotfix/xxx
+4. 及时清理: 合并后删掉已完成的分支
+Git Flow和GitHub Flow有什么区别？
+Git ...
+    Conversation preview:
+      user: Git分支管理有什么好的实践？
+      assistant: Git分支管理的最佳实践:
+1. 主分支保护: main/master分支设为受保护,只能通过PR合并
+2. 功能分支: 每个功能或修复使用独立的feature/fix分支
+3. 命名规范: feat
+      user: Git Flow和GitHub Flow有什么区别？
+      assistant: Git Flow:
+- 有develop、release、hotfix等多种分支类型
+- 适合有明确版本发布节奏的项目
+- 流程较复杂,分支较多
+
+GitHub Flow:
+- 只有main和feat
+      user: 如何处理合并冲突？
+      assistant: 处理合并冲突的步骤:
+1. git merge或git rebase时出现冲突,Git会标记冲突文件
+2. 打开冲突文件,找到<<<<<<< ======= >>>>>>>标记
+3. 手动编辑,保留正
+
+  [input_dedup] Group #1 (15 members)
+    Scoring method   : LLM-judge
+    Member indices   : [0, 3, 5, 10, 11, 12, 14, 15, 17, 24, 25, 28, 30, 31, 32]
+    Scores           : idx0=7.9, idx3=5.7, idx5=7.8, idx10=6.4, idx11=5.57, idx12=6.77, idx14=7.58, idx15=7.3, idx17=6.37, idx24=7.43, idx25=7.21, idx28=6.67, idx30=7.42, idx31=6.43, idx32=6.43
+    Kept index       : 0
+    Removed indices  : [3, 5, 10, 11, 12, 14, 15, 17, 24, 25, 28, 30, 31, 32]
+    Text preview     : 微服务架构和单体架构相比有什么优势？
+微服务架构相比单体架构的优势:
+1. 独立部署: 每个服务可以单独发布,不影响其他服务
+2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈
+3. 可扩展性: 可以针对热点服务单独扩容
+4. 故障隔离: 一个服务故障不会导致整个系统崩溃
+微服务有什么缺点吗？
+微服务的主要挑战:
+1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理
+2. 数据一致...
+    Conversation preview:
+      user: 微服务架构和单体架构相比有什么优势？
+      assistant: 微服务架构相比单体架构的优势:
+1. 独立部署: 每个服务可以单独发布,不影响其他服务
+2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈
+3. 可扩展性: 可以针对热点服务单独扩容
+4. 故
+      user: 微服务有什么缺点吗？
+      assistant: 微服务的主要挑战:
+1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理
+2. 数据一致性: 跨服务的事务管理比单体困难得多
+3. 运维成本: 需要容器化、服务编排、日志聚合、链路追踪等基础设
+      user: 那什么时候应该选择微服务？
+      assistant: 选择微服务的时机:
+1. 团队规模较大(>10人): 多团队并行开发时,微服务能减少代码冲突
+2. 业务复杂度高: 不同业务模块有明显的边界
+3. 需要弹性扩缩: 某些模块流量大但其他模块不需要扩容
+
+
+============================================================
+  End of Report
+============================================================

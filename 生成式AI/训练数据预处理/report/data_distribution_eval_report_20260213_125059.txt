@@ -1,0 +1,60 @@
+Timestamp : 20260213_125059
+Input     : test_multiturn_deduped.jsonl
+
+======================================================================
+  数据分布评估报告
+======================================================================
+
+总样本数: 18
+
+--- 语言分布 ---
+  中文: 12 (66.67%)
+  中英混合: 6 (33.33%)
+
+--- 任务类型分布 ---
+  知识问答: 14 (77.78%)
+  代码生成: 4 (22.22%)
+  多轮对话占比: 100.0%
+
+--- 难度分布 ---
+  中: 18 (100.0%)
+
+--- 长度类别分布 (短≤200, 中, 长≥1000 字符) ---
+  中: 16 (88.89%)
+  长: 1 (5.56%)
+  短: 1 (5.56%)
+
+--- 长度分布 (字符) ---
+  input: mean=43, min=23, max=108, P10=28, P25=30, P50=37, P75=45, P90=64, P99=103
+  output: mean=376, min=148, max=920, P10=192, P25=226, P50=360, P75=430, P90=575, P99=869
+  total: mean=420, min=192, max=1002, P10=222, P25=252, P50=395, P75=475, P90=669, P99=947
+
+--- 4D 交叉分布 (language×task_type×length_category×difficulty) ---
+  非零组合数: 6
+  Top-6 组合:
+    中文 × 知识问答 × 中 × 中: 9
+    中英混合 × 知识问答 × 中 × 中: 3
+    中英混合 × 代码生成 × 中 × 中: 3
+    中文 × 代码生成 × 中 × 中: 1
+    中文 × 知识问答 × 长 × 中: 1
+    中文 × 知识问答 × 短 × 中: 1
+  稀疏组合 (低于阈值): 6
+
+--- 告警 (9 条) ---
+  [WARNING] [task] 任务类型 '知识问答' 占比过高: 77.78% (>50.0%). 分布偏斜，建议下采样或补充其他类型。
+  [WARNING] [task] 任务类型 '知识问答' 样本不足: 数量=14 (<2000). 建议补充数据。
+  [WARNING] [task] 任务类型 '代码生成' 样本不足: 数量=4 (<2000). 建议补充数据。
+  [WARNING] [difficulty] 难度 '低' 占比过低: 实际=0.0%, 目标=30.0%, 偏差=30.0% (>15.0%). 
+  [WARNING] [difficulty] 难度 '中' 占比过高: 实际=100.0%, 目标=50.0%, 偏差=50.0% (>15.0%). 
+  [WARNING] [difficulty] 难度 '高' 占比过低: 实际=0.0%, 目标=20.0%, 偏差=20.0% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '短' 占比过低: 实际=5.56%, 目标=25.0%, 偏差=19.4% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '中' 占比过高: 实际=88.89%, 目标=50.0%, 偏差=38.9% (>15.0%). 
+  [WARNING] [length_category] 长度类别 '长' 占比过低: 实际=5.56%, 目标=25.0%, 偏差=19.4% (>15.0%). 
+
+--- 提示 (6 条) ---
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='知识问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=9 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='知识问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=3 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中英混合' × task_type='代码生成' × length_category='中' × difficulty='中' 样本稀疏: 数量=3 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='代码生成' × length_category='中' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='知识问答' × length_category='长' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。
+  [INFO] [language×task_type×length_category×difficulty] language='中文' × task_type='知识问答' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。

@@ -1,0 +1,59 @@
+{
+  "timestamp": "20260213_074427",
+  "input_file": "zh_mixed_samples.jsonl",
+  "output_file": "./daily-dialog-bedrock-cleaned.jsonl",
+  "summary": {
+    "total_samples": 100,
+    "kept_samples": 99,
+    "filtered_samples": 1,
+    "keep_rate": 99.0,
+    "filter_rate": 1.0
+  },
+  "filter_reasons": [
+    {
+      "reason": "ad_keyword@msg1",
+      "count": 1,
+      "percentage": 100.0,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "你平时怎么keep up with最新的tech trends？"
+          },
+          {
+            "role": "assistant",
+            "text": "我主要是看Hacker News和一些tech blog，还subscribe了几个newsletter，比如TLDR和ByteByteGo。Podcast也会听，commute的时候很方便。"
+          },
+          {
+            "role": "user",
+            "text": "中文的tech content呢？"
+          }
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "fullwidth_to_halfwidth": true,
+    "normalize_whitespace": true,
+    "nfd_normalize": true,
+    "traditional_to_simplified": false,
+    "to_lowercase": false,
+    "remove_punctuation": false,
+    "filter_language": true,
+    "allowed_scripts": [
+      "CJK",
+      "LATIN"
+    ],
+    "filter_punctuation": true,
+    "max_punct_ratio": 0.3,
+    "filter_length": true,
+    "min_msg_len": 2,
+    "max_msg_len": 2000,
+    "filter_uppercase": true,
+    "max_upper_ratio": 0.7,
+    "filter_numeric": true,
+    "filter_urls": true,
+    "filter_keywords": true,
+    "filter_short_login": true
+  }
+}

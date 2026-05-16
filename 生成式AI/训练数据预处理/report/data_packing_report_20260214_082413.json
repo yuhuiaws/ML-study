@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260214_082413",
+  "input_file": "/tmp/tmpjnellnxp/input.jsonl",
+  "output_path": "/tmp/tmpjnellnxp/output.parquet",
+  "output_format": "parquet",
+  "version_tag": "",
+  "summary": {
+    "total_input_samples": 1,
+    "chat_template_applied": false,
+    "model_id": "N/A",
+    "packing_enabled": false,
+    "samples_after_packing": 1,
+    "packing_ratio": "1:1 (1.00x)",
+    "tokenization_enabled": false,
+    "max_seq_len": 4096,
+    "final_sample_count": 1
+  },
+  "config": {
+    "enable_chat_template": false,
+    "enable_packing": false,
+    "enable_tokenization": false,
+    "max_seq_len": 4096,
+    "packing_separator": "",
+    "drop_short_tail": false,
+    "min_packing_ratio": 0.5,
+    "parquet_compression": "snappy",
+    "add_generation_prompt": false,
+    "version_tag": ""
+  }
+}

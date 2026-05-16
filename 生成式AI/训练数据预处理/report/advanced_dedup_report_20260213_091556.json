@@ -1,0 +1,510 @@
+{
+  "timestamp": "20260213_091556",
+  "input_file": "test_multiturn_duplicates.jsonl",
+  "output_file": "./zh_mixed_advanced_deduped.jsonl",
+  "summary": {
+    "total_samples": 33,
+    "final_kept": 4,
+    "total_removed": 29,
+    "dedup_rate": 87.88
+  },
+  "stages": [
+    {
+      "method": "full_sample_embedding_dedup",
+      "method_description": "Cohere Embed Multilingual v3 full-text embedding dedup: concatenate all message texts per conversation, embed via Bedrock Cohere, cluster by cosine similarity (threshold >= 0.85), keep best-scored per cluster. Duplicate reason: semantically similar full conversations.",
+      "input_count": 33,
+      "output_count": 18,
+      "dup_groups": 8,
+      "removed": 15
+    },
+    {
+      "method": "input_embedding_dedup",
+      "method_description": "Cohere Embed Multilingual v3 input-only embedding dedup: embed only user turns, cluster by cosine similarity (threshold >= 0.7), evaluate output quality via llm, keep best answer per cluster. Duplicate reason: semantically similar user inputs with different quality answers.",
+      "input_count": 18,
+      "output_count": 4,
+      "dup_groups": 1,
+      "removed": 14
+    }
+  ],
+  "duplicate_groups": [
+    {
+      "method": "full_sample_dedup",
+      "group_id": 1,
+      "member_count": 3,
+      "member_indices": [
+        0,
+        6,
+        21
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "0": 7.9,
+        "6": 7.0,
+        "21": 7.6
+      },
+      "kept_index": 0,
+      "removed_indices": [
+        6,
+        21
+      ],
+      "text_preview": "微服务架构和单体架构相比有什么优势？\n微服务架构相比单体架构的优势:\n1. 独立部署: 每个服务可以单独发布,不影响其他服务\n2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈\n3. 可扩展性: 可以针对热点服务单独扩容\n4. 故障隔离: 一个服务故障不会导致整个系统崩溃\n微服务有什么缺点吗？\n微服务的主要挑战:\n1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理\n2. 数据一致...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "微服务架构和单体架构相比有什么优势？"
+        },
+        {
+          "role": "assistant",
+          "text": "微服务架构相比单体架构的优势:\n1. 独立部署: 每个服务可以单独发布,不影响其他服务\n2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈\n3. 可扩展性: 可以针对热点服务单独扩容\n4. 故"
+        },
+        {
+          "role": "user",
+          "text": "微服务有什么缺点吗？"
+        },
+        {
+          "role": "assistant",
+          "text": "微服务的主要挑战:\n1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理\n2. 数据一致性: 跨服务的事务管理比单体困难得多\n3. 运维成本: 需要容器化、服务编排、日志聚合、链路追踪等基础设"
+        },
+        {
+          "role": "user",
+          "text": "那什么时候应该选择微服务？"
+        },
+        {
+          "role": "assistant",
+          "text": "选择微服务的时机:\n1. 团队规模较大(>10人): 多团队并行开发时,微服务能减少代码冲突\n2. 业务复杂度高: 不同业务模块有明显的边界\n3. 需要弹性扩缩: 某些模块流量大但其他模块不需要扩容\n"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 2,
+      "member_count": 3,
+      "member_indices": [
+        1,
+        14,
+        22
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "1": 7.48,
+        "14": 7.58,
+        "22": 7.58
+      },
+      "kept_index": 14,
+      "removed_indices": [
+        1,
+        22
+      ],
+      "text_preview": "如何设计一个好的数据库表结构？\n设计数据库表结构需要遵循以下原则:\n1. 确定实体和关系: 先画ER图,理清表之间的一对一、一对多、多对多关系\n2. 遵循范式: 至少达到第三范式,减少数据冗余\n3. 合理选择主键: 推荐使用自增ID或UUID\n4. 字段类型要精确: 比如金额用DECIMAL而不是FLOAT\n什么时候需要反范式设计？\n反范式适用于以下场景:\n1. 读多写少的情况: 为了减少JOIN...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "如何设计一个好的数据库表结构？"
+        },
+        {
+          "role": "assistant",
+          "text": "设计数据库表结构需要遵循以下原则:\n1. 确定实体和关系: 先画ER图,理清表之间的一对一、一对多、多对多关系\n2. 遵循范式: 至少达到第三范式,减少数据冗余\n3. 合理选择主键: 推荐使用自增ID"
+        },
+        {
+          "role": "user",
+          "text": "什么时候需要反范式设计？"
+        },
+        {
+          "role": "assistant",
+          "text": "反范式适用于以下场景:\n1. 读多写少的情况: 为了减少JOIN操作,可以冗余存储常用字段\n2. 报表查询: 提前计算并存储汇总数据,避免实时聚合\n3. 高并发场景: 减少表关联可以降低锁竞争\n但要注"
+        },
+        {
+          "role": "user",
+          "text": "索引应该怎么建？"
+        },
+        {
+          "role": "assistant",
+          "text": "索引建立的原则:\n1. WHERE条件中频繁使用的列要建索引\n2. 联合索引遵循最左前缀原则\n3. 选择性高的列更适合建索引(如用户ID vs 性别)\n4. 避免过多索引,每个索引都会增加写入开销\n5"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 3,
+      "member_count": 3,
+      "member_indices": [
+        2,
+        13,
+        25
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "2": 7.07,
+        "13": 6.79,
+        "25": 7.3
+      },
+      "kept_index": 25,
+      "removed_indices": [
+        2,
+        13
+      ],
+      "text_preview": "如何用Docker部署一个Python Web应用？\n基本步骤:\n1. 编写Dockerfile\n2. 构建镜像: docker build -t myapp .\n3. 运行容器: docker run -p 8080:8080 myapp\n\n一个Flask应用的Dockerfile示例:\nFROM python:3.11-slim\nWORKDIR /app\nCOPY requirements.t...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "如何用Docker部署一个Python Web应用？"
+        },
+        {
+          "role": "assistant",
+          "text": "基本步骤:\n1. 编写Dockerfile\n2. 构建镜像: docker build -t myapp .\n3. 运行容器: docker run -p 8080:8080 myapp\n\n一个Fla"
+        },
+        {
+          "role": "user",
+          "text": "如何优化Docker镜像的大小？"
+        },
+        {
+          "role": "assistant",
+          "text": "优化Docker镜像大小的技巧:\n1. 使用alpine或slim基础镜像\n2. 多阶段构建: 编译阶段和运行阶段分离\n3. 合并RUN指令减少层数\n4. 使用.dockerignore排除不需要的文"
+        },
+        {
+          "role": "user",
+          "text": "如何用docker-compose管理多个容器？"
+        },
+        {
+          "role": "assistant",
+          "text": "docker-compose.yml示例:\nversion: '3.8'\nservices:\n  web:\n    build: .\n    ports: ['8080:8080']\n    depe"
+        },
+        {
+          "role": "user",
+          "text": "如何实现容器的自动重启？"
+        },
+        {
+          "role": "assistant",
+          "text": "容器自动重启策略:\n1. docker run --restart=always  # 总是重启\n2. docker run --restart=unless-stopped  # 除非手动停止\n3."
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 4,
+      "member_count": 3,
+      "member_indices": [
+        4,
+        18,
+        26
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "4": 8.08,
+        "18": 8.07,
+        "26": 8.07
+      },
+      "kept_index": 4,
+      "removed_indices": [
+        18,
+        26
+      ],
+      "text_preview": "我的Python代码运行时报了一个TypeError,怎么排查？\nTypeError通常是类型不匹配导致的。可以从以下几方面排查:\n1. 查看完整的错误堆栈,定位出错的行号\n2. 检查该行涉及的变量类型,用type()或isinstance()确认\n3. 常见原因:字符串和数字混合运算、None值参与运算、函数参数类型错误\n堆栈信息显示是在一个字典操作的地方出错了,提示 'unhashable t...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "我的Python代码运行时报了一个TypeError,怎么排查？"
+        },
+        {
+          "role": "assistant",
+          "text": "TypeError通常是类型不匹配导致的。可以从以下几方面排查:\n1. 查看完整的错误堆栈,定位出错的行号\n2. 检查该行涉及的变量类型,用type()或isinstance()确认\n3. 常见原因:"
+        },
+        {
+          "role": "user",
+          "text": "堆栈信息显示是在一个字典操作的地方出错了,提示 'unhashable type: list'"
+        },
+        {
+          "role": "assistant",
+          "text": "这个错误是因为你用了列表(list)作为字典的key。字典的key必须是可哈希的类型,比如字符串、数字、元组等。列表是可变对象,不能作为key。\n\n解决方案:\n1. 如果列表内容固定,转成元组: tu"
+        },
+        {
+          "role": "user",
+          "text": "转成元组之后确实解决了,但是现在又报了KeyError"
+        },
+        {
+          "role": "assistant",
+          "text": "KeyError说明你访问的key在字典中不存在。几个排查方法:\n1. 用 dict.get(key, default) 代替 dict[key],避免报错\n2. 用 if key in dict 先"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 5,
+      "member_count": 3,
+      "member_indices": [
+        5,
+        19,
+        27
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "5": 7.8,
+        "19": 7.73,
+        "27": 7.8
+      },
+      "kept_index": 5,
+      "removed_indices": [
+        19,
+        27
+      ],
+      "text_preview": "Python的async/await是怎么工作的？\nPython的异步编程基于事件循环(event loop):\n\n1. async def 定义协程函数\n2. await 挂起当前协程,等待异步操作完成\n3. 事件循环调度多个协程并发执行\n\n核心概念:\n- 协程(coroutine): async def定义的函数\n- 任务(task): asyncio.create_task()创建的可调度单...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "Python的async/await是怎么工作的？"
+        },
+        {
+          "role": "assistant",
+          "text": "Python的异步编程基于事件循环(event loop):\n\n1. async def 定义协程函数\n2. await 挂起当前协程,等待异步操作完成\n3. 事件循环调度多个协程并发执行\n\n核心概念"
+        },
+        {
+          "role": "user",
+          "text": "和多线程相比有什么区别？"
+        },
+        {
+          "role": "assistant",
+          "text": "异步 vs 多线程:\n\n异步(asyncio):\n- 单线程,通过协程切换实现并发\n- 没有线程安全问题,不需要锁\n- 适合I/O密集型: 网络请求、文件读写\n- 不能利用多核CPU\n\n多线程(thr"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 6,
+      "member_count": 3,
+      "member_indices": [
+        7,
+        8,
+        9
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "7": 7.02,
+        "8": 7.38,
+        "9": 7.28
+      },
+      "kept_index": 8,
+      "removed_indices": [
+        7,
+        9
+      ],
+      "text_preview": "前端面试中经常会问到闭包,能详细解释一下吗？\n闭包是指一个函数能够访问其外部函数作用域中的变量,即使外部函数已经执行完毕。\n\n核心原理: JavaScript中函数创建时会保存对外部变量的引用,形成一个'封闭的环境'。\n\n经典例子:\nfunction counter() {\n  let count = 0;\n  return function() { return ++count; };\n}\nco...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "前端面试中经常会问到闭包,能详细解释一下吗？"
+        },
+        {
+          "role": "assistant",
+          "text": "闭包是指一个函数能够访问其外部函数作用域中的变量,即使外部函数已经执行完毕。\n\n核心原理: JavaScript中函数创建时会保存对外部变量的引用,形成一个'封闭的环境'。\n\n经典例子:\nfuncti"
+        },
+        {
+          "role": "user",
+          "text": "闭包有什么常见的应用场景？"
+        },
+        {
+          "role": "assistant",
+          "text": "闭包的常见应用:\n1. 数据封装/私有变量: 模拟面向对象中的private\n2. 函数工厂: 根据参数生成定制化函数\n3. 回调函数: 事件处理中保持对上下文的引用\n4. 柯里化: 将多参数函数转换"
+        },
+        {
+          "role": "user",
+          "text": "使用闭包对性能有影响吗？"
+        },
+        {
+          "role": "assistant",
+          "text": "闭包对性能的影响:\n1. 内存占用: 闭包会保持对外部变量的引用,占用额外内存\n2. 创建开销: 每次创建闭包都会分配新的作用域链,比普通函数稍慢\n3. 垃圾回收延迟: 被闭包引用的变量不会被立即回收"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 7,
+      "member_count": 3,
+      "member_indices": [
+        16,
+        20,
+        23
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "16": 7.45,
+        "20": 7.45,
+        "23": 7.45
+      },
+      "kept_index": 16,
+      "removed_indices": [
+        20,
+        23
+      ],
+      "text_preview": "什么是时间复杂度和空间复杂度？\n时间复杂度衡量算法执行所需的时间随输入规模增长的变化趋势,用大O表示法。\n空间复杂度衡量算法执行所需的额外内存空间。\n\n常见时间复杂度(从快到慢):\nO(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n)\n能举一些具体算法的例子吗？\n各种复杂度的典型算法:\n- O(1): 数组按索引访问、哈希表查找\n- O(log ...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "什么是时间复杂度和空间复杂度？"
+        },
+        {
+          "role": "assistant",
+          "text": "时间复杂度衡量算法执行所需的时间随输入规模增长的变化趋势,用大O表示法。\n空间复杂度衡量算法执行所需的额外内存空间。\n\n常见时间复杂度(从快到慢):\nO(1) < O(log n) < O(n) < "
+        },
+        {
+          "role": "user",
+          "text": "能举一些具体算法的例子吗？"
+        },
+        {
+          "role": "assistant",
+          "text": "各种复杂度的典型算法:\n- O(1): 数组按索引访问、哈希表查找\n- O(log n): 二分查找、平衡二叉树操作\n- O(n): 线性搜索、遍历数组\n- O(n log n): 快速排序、归并排序"
+        },
+        {
+          "role": "user",
+          "text": "实际开发中怎么分析代码的复杂度？"
+        },
+        {
+          "role": "assistant",
+          "text": "分析复杂度的方法:\n1. 看循环嵌套: 单层循环O(n),双层嵌套O(n²)\n2. 递归用递推式: T(n) = 2T(n/2) + O(n) → O(n log n)\n3. 取最高项: O(n² +"
+        }
+      ]
+    },
+    {
+      "method": "full_sample_dedup",
+      "group_id": 8,
+      "member_count": 2,
+      "member_indices": [
+        29,
+        30
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "29": 7.25,
+        "30": 7.42
+      },
+      "kept_index": 30,
+      "removed_indices": [
+        29
+      ],
+      "text_preview": "Git分支管理有什么好的实践？\nGit分支管理的最佳实践:\n1. 主分支保护: main/master分支设为受保护,只能通过PR合并\n2. 功能分支: 每个功能或修复使用独立的feature/fix分支\n3. 命名规范: feature/xxx, bugfix/xxx, hotfix/xxx\n4. 及时清理: 合并后删掉已完成的分支\nGit Flow和GitHub Flow有什么区别？\nGit ...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "Git分支管理有什么好的实践？"
+        },
+        {
+          "role": "assistant",
+          "text": "Git分支管理的最佳实践:\n1. 主分支保护: main/master分支设为受保护,只能通过PR合并\n2. 功能分支: 每个功能或修复使用独立的feature/fix分支\n3. 命名规范: feat"
+        },
+        {
+          "role": "user",
+          "text": "Git Flow和GitHub Flow有什么区别？"
+        },
+        {
+          "role": "assistant",
+          "text": "Git Flow:\n- 有develop、release、hotfix等多种分支类型\n- 适合有明确版本发布节奏的项目\n- 流程较复杂,分支较多\n\nGitHub Flow:\n- 只有main和feat"
+        },
+        {
+          "role": "user",
+          "text": "如何处理合并冲突？"
+        },
+        {
+          "role": "assistant",
+          "text": "处理合并冲突的步骤:\n1. git merge或git rebase时出现冲突,Git会标记冲突文件\n2. 打开冲突文件,找到<<<<<<< ======= >>>>>>>标记\n3. 手动编辑,保留正"
+        }
+      ]
+    },
+    {
+      "method": "input_dedup",
+      "group_id": 1,
+      "member_count": 15,
+      "member_indices": [
+        0,
+        3,
+        5,
+        10,
+        11,
+        12,
+        14,
+        15,
+        17,
+        24,
+        25,
+        28,
+        30,
+        31,
+        32
+      ],
+      "scoring_method": "LLM-judge",
+      "scores": {
+        "0": 7.9,
+        "3": 5.7,
+        "5": 7.8,
+        "10": 6.4,
+        "11": 5.57,
+        "12": 6.77,
+        "14": 7.58,
+        "15": 7.3,
+        "17": 6.37,
+        "24": 7.43,
+        "25": 7.21,
+        "28": 6.67,
+        "30": 7.42,
+        "31": 6.43,
+        "32": 6.43
+      },
+      "kept_index": 0,
+      "removed_indices": [
+        3,
+        5,
+        10,
+        11,
+        12,
+        14,
+        15,
+        17,
+        24,
+        25,
+        28,
+        30,
+        31,
+        32
+      ],
+      "text_preview": "微服务架构和单体架构相比有什么优势？\n微服务架构相比单体架构的优势:\n1. 独立部署: 每个服务可以单独发布,不影响其他服务\n2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈\n3. 可扩展性: 可以针对热点服务单独扩容\n4. 故障隔离: 一个服务故障不会导致整个系统崩溃\n微服务有什么缺点吗？\n微服务的主要挑战:\n1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理\n2. 数据一致...",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "微服务架构和单体架构相比有什么优势？"
+        },
+        {
+          "role": "assistant",
+          "text": "微服务架构相比单体架构的优势:\n1. 独立部署: 每个服务可以单独发布,不影响其他服务\n2. 技术多样性: 不同服务可以使用不同的编程语言和技术栈\n3. 可扩展性: 可以针对热点服务单独扩容\n4. 故"
+        },
+        {
+          "role": "user",
+          "text": "微服务有什么缺点吗？"
+        },
+        {
+          "role": "assistant",
+          "text": "微服务的主要挑战:\n1. 分布式复杂性: 网络延迟、服务发现、负载均衡都需要处理\n2. 数据一致性: 跨服务的事务管理比单体困难得多\n3. 运维成本: 需要容器化、服务编排、日志聚合、链路追踪等基础设"
+        },
+        {
+          "role": "user",
+          "text": "那什么时候应该选择微服务？"
+        },
+        {
+          "role": "assistant",
+          "text": "选择微服务的时机:\n1. 团队规模较大(>10人): 多团队并行开发时,微服务能减少代码冲突\n2. 业务复杂度高: 不同业务模块有明显的边界\n3. 需要弹性扩缩: 某些模块流量大但其他模块不需要扩容\n"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "enable_full_sample_dedup": true,
+    "enable_input_dedup": true,
+    "embed_model_id": "cohere.embed-multilingual-v3",
+    "embed_batch_size": 96,
+    "full_sample_threshold": 0.85,
+    "input_threshold": 0.7,
+    "scoring_method": "llm",
+    "judge_model_id": "us.anthropic.claude-opus-4-6-v1",
+    "weight_completeness": 0.4,
+    "weight_info_density": 0.6,
+    "multi_turn_weight_mode": "linear_increasing",
+    "bedrock_region": "us-east-1"
+  }
+}

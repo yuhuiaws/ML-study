@@ -1,0 +1,19 @@
+============================================================
+Data Packing & Version Management Report
+============================================================
+Timestamp         : 20260214_082413
+Input file        : /tmp/tmpjnellnxp/input.jsonl
+Output path       : /tmp/tmpjnellnxp/output.parquet
+Output format     : parquet
+Version tag       : 
+
+--- Summary ---
+Total input samples       : 1
+Chat template applied     : False
+Model ID                  : N/A
+Packing enabled           : False
+Samples after packing     : 1
+Packing ratio             : 1:1 (1.00x)
+Tokenization enabled      : False
+Max sequence length       : 4096
+Final sample count        : 1

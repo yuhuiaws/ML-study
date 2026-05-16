@@ -1,0 +1,35 @@
+============================================================
+  Basic Clean LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_074427
+Input     : zh_mixed_samples.jsonl
+Output    : ./daily-dialog-bedrock-cleaned.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 100
+  Kept samples    : 99
+  Filtered samples: 1
+  Keep rate       : 99.0%
+  Filter rate     : 1.0%
+
+----------------------------------------
+  Filter Reasons Breakdown
+----------------------------------------
+  ad_keyword@msg1                          :      1  (100.0%)
+
+----------------------------------------
+  Filtered Sample Examples (up to 3 per reason)
+----------------------------------------
+
+  [ad_keyword@msg1] (1 filtered)
+    Example 1:
+      user: 你平时怎么keep up with最新的tech trends？
+      assistant: 我主要是看Hacker News和一些tech blog，还subscribe了几个newsletter，比如TLDR和ByteByteGo。Podcast也会听，commute的时候很方便。
+      user: 中文的tech content呢？
+
+============================================================
+  End of Report
+============================================================

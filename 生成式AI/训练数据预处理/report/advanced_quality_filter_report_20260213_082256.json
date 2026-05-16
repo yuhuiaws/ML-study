@@ -1,0 +1,49 @@
+{
+  "timestamp": "20260213_082256",
+  "input_file": "./zh_mixed_deduped.jsonl",
+  "output_file": "./test_filtered_output.jsonl",
+  "summary": {
+    "total_samples": 37,
+    "kept_samples": 37,
+    "filtered_samples": 0,
+    "keep_rate": 100.0,
+    "filter_rate": 0.0,
+    "llm_calls": 0
+  },
+  "active_filters": [
+    "empty_turns (空消息过滤)",
+    "repeated_assistant (重复助手回复过滤)",
+    "role_alternation (角色交替检查)",
+    "truncation (截断检测)",
+    "turn_count (轮次数量过滤, min=2, max=100)",
+    "user_low_info (用户低信息量过滤, max_ratio=0.6)",
+    "stalling (助手重复内容过滤, max_repeat_ratio=0.5)"
+  ],
+  "filter_reasons": [],
+  "config": {
+    "filter_empty_turns": true,
+    "filter_repeated_assistant": true,
+    "filter_role_alternation": true,
+    "filter_truncation": true,
+    "truncation_markers": [
+      "...",
+      "…",
+      "[截断]",
+      "[truncated]",
+      "——未完"
+    ],
+    "filter_turn_count": true,
+    "min_turns": 2,
+    "max_turns": 100,
+    "filter_user_low_info": true,
+    "max_low_info_ratio": 0.6,
+    "filter_stalling": true,
+    "max_repeat_ratio": 0.5,
+    "enable_llm_quality": false,
+    "llm_quality_threshold": 6.0,
+    "enable_llm_moderation": false,
+    "enable_llm_pii": false,
+    "bedrock_model_id": "us.anthropic.claude-opus-4-6-v1",
+    "bedrock_region": "us-east-1"
+  }
+}

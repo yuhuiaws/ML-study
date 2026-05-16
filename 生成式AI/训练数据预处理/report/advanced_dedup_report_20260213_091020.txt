@@ -1,0 +1,56 @@
+============================================================
+  Advanced Dedup LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_091020
+Input     : /tmp/tmpi92jpam0/in.jsonl
+Output    : /tmp/tmpi92jpam0/out.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 3
+  Final kept      : 2
+  Total removed   : 1
+  Dedup rate      : 33.3%
+
+----------------------------------------
+  Configuration
+----------------------------------------
+  Scoring method          : heuristic
+  Embed model             : cohere.embed-multilingual-v3
+  Judge model             : us.anthropic.claude-opus-4-6-v1
+  Full-sample threshold   : 0.9
+  Input threshold         : 0.7
+  Multi-turn weight mode  : linear_increasing
+
+----------------------------------------
+  Per-Stage Breakdown
+----------------------------------------
+
+  [full_sample_embedding_dedup]
+    Method description : Cohere Embed Multilingual v3 full-text embedding dedup: concatenate all message texts per conversation, embed via Bedrock Cohere, cluster by cosine similarity (threshold >= 0.9), keep best-scored per cluster. Duplicate reason: semantically similar full conversations.
+    Input count        : 3
+    Output count       : 2
+    Duplicate groups   : 1
+    Removed            : 1
+
+----------------------------------------
+  Duplicate Group Details
+----------------------------------------
+
+  [full_sample_dedup] Group #1 (2 members)
+    Scoring method   : heuristic
+    Member indices   : [0, 1]
+    Scores           : idx0=1.19, idx1=1.64
+    Kept index       : 1
+    Removed indices  : [0]
+    Text preview     : What is Python?
+Python is a great general-purpose high-level programming language used widely.
+    Conversation preview:
+      user: What is Python?
+      assistant: Python is a great general-purpose high-level programming language used widely.
+
+============================================================
+  End of Report
+============================================================

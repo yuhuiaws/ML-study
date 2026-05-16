@@ -1,0 +1,32 @@
+============================================================
+  Advanced Quality Filter — Processing Report
+============================================================
+
+Timestamp : 20260213_082256
+Input     : ./zh_mixed_deduped.jsonl
+Output    : ./test_filtered_output.jsonl
+
+----------------------------------------
+  Active Filter Methods
+----------------------------------------
+  * empty_turns (空消息过滤)
+  * repeated_assistant (重复助手回复过滤)
+  * role_alternation (角色交替检查)
+  * truncation (截断检测)
+  * turn_count (轮次数量过滤, min=2, max=100)
+  * user_low_info (用户低信息量过滤, max_ratio=0.6)
+  * stalling (助手重复内容过滤, max_repeat_ratio=0.5)
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 37
+  Kept samples    : 37
+  Filtered samples: 0
+  Keep rate       : 100.0%
+  Filter rate     : 0.0%
+
+
+============================================================
+  End of Report
+============================================================

@@ -1,0 +1,385 @@
+{
+  "total_samples": 100,
+  "language_distribution": {
+    "total_samples": 100,
+    "distribution": {
+      "中文": {
+        "count": 50,
+        "percentage": 50.0,
+        "total_chars": 5272
+      },
+      "中英混合": {
+        "count": 50,
+        "percentage": 50.0,
+        "total_chars": 10018
+      }
+    }
+  },
+  "task_distribution": {
+    "total_samples": 100,
+    "distribution": {
+      "多轮闲聊": {
+        "count": 71,
+        "percentage": 71.0
+      },
+      "角色扮演": {
+        "count": 13,
+        "percentage": 13.0
+      },
+      "QA问答": {
+        "count": 13,
+        "percentage": 13.0
+      },
+      "知识问答": {
+        "count": 2,
+        "percentage": 2.0
+      },
+      "代码生成": {
+        "count": 1,
+        "percentage": 1.0
+      }
+    },
+    "multi_turn_count": 91,
+    "multi_turn_percentage": 91.0
+  },
+  "length_distribution": {
+    "input": {
+      "mean": 39.07,
+      "min": 8,
+      "max": 91,
+      "percentiles": {
+        "P10": 19.0,
+        "P25": 26.0,
+        "P50": 32.5,
+        "P75": 51.25,
+        "P90": 65.0,
+        "P99": 88.03000000000002
+      }
+    },
+    "output": {
+      "mean": 112.83,
+      "min": 31,
+      "max": 213,
+      "percentiles": {
+        "P10": 58.900000000000006,
+        "P25": 77.75,
+        "P50": 102.5,
+        "P75": 153.25,
+        "P90": 185.2,
+        "P99": 210.03000000000003
+      }
+    },
+    "total": {
+      "mean": 152.9,
+      "min": 40,
+      "max": 286,
+      "percentiles": {
+        "P10": 83.39999999999999,
+        "P25": 106.5,
+        "P50": 135.5,
+        "P75": 204.25,
+        "P90": 234.3,
+        "P99": 279.07000000000005
+      }
+    }
+  },
+  "difficulty_distribution": {
+    "total_samples": 100,
+    "distribution": {
+      "低": {
+        "count": 79,
+        "percentage": 79.0
+      },
+      "中": {
+        "count": 21,
+        "percentage": 21.0
+      }
+    }
+  },
+  "length_category_distribution": {
+    "total_samples": 100,
+    "distribution": {
+      "短": {
+        "count": 73,
+        "percentage": 73.0
+      },
+      "中": {
+        "count": 27,
+        "percentage": 27.0
+      }
+    }
+  },
+  "cross_distribution_4d": {
+    "dimensions": [
+      "language",
+      "task_type",
+      "length_category",
+      "difficulty"
+    ],
+    "cells": [
+      {
+        "language": "中文",
+        "task_type": "多轮闲聊",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 34
+      },
+      {
+        "language": "中英混合",
+        "task_type": "多轮闲聊",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 17
+      },
+      {
+        "language": "中文",
+        "task_type": "角色扮演",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 11
+      },
+      {
+        "language": "中英混合",
+        "task_type": "多轮闲聊",
+        "length_category": "中",
+        "difficulty": "低",
+        "count": 11
+      },
+      {
+        "language": "中英混合",
+        "task_type": "多轮闲聊",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 7
+      },
+      {
+        "language": "中英混合",
+        "task_type": "QA问答",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 7
+      },
+      {
+        "language": "中文",
+        "task_type": "QA问答",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 2
+      },
+      {
+        "language": "中英混合",
+        "task_type": "角色扮演",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 2
+      },
+      {
+        "language": "中英混合",
+        "task_type": "QA问答",
+        "length_category": "短",
+        "difficulty": "中",
+        "count": 2
+      },
+      {
+        "language": "中文",
+        "task_type": "多轮闲聊",
+        "length_category": "短",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中文",
+        "task_type": "知识问答",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 1
+      },
+      {
+        "language": "中文",
+        "task_type": "QA问答",
+        "length_category": "短",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中英混合",
+        "task_type": "代码生成",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中英混合",
+        "task_type": "QA问答",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 1
+      },
+      {
+        "language": "中英混合",
+        "task_type": "多轮闲聊",
+        "length_category": "短",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中英混合",
+        "task_type": "知识问答",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 1
+      }
+    ],
+    "total_samples": 100,
+    "num_cells": 16
+  },
+  "alerts": [
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '多轮闲聊' 占比过高: 71.0% (>50.0%). 分布偏斜，建议下采样或补充其他类型。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '多轮闲聊' 样本不足: 数量=71 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '角色扮演' 样本不足: 数量=13 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 'QA问答' 样本不足: 数量=13 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '知识问答' 样本不足: 数量=2 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '代码生成' 样本不足: 数量=1 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '低' 占比过高: 实际=79.0%, 目标=30.0%, 偏差=49.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '中' 占比过低: 实际=21.0%, 目标=50.0%, 偏差=29.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '高' 占比过低: 实际=0.0%, 目标=20.0%, 偏差=20.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '短' 占比过高: 实际=73.0%, 目标=25.0%, 偏差=48.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '中' 占比过低: 实际=27.0%, 目标=50.0%, 偏差=23.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '长' 占比过低: 实际=0.0%, 目标=25.0%, 偏差=25.0% (>15.0%). "
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='多轮闲聊' × length_category='短' × difficulty='低' 样本稀疏: 数量=34 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='多轮闲聊' × length_category='短' × difficulty='低' 样本稀疏: 数量=17 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='角色扮演' × length_category='短' × difficulty='低' 样本稀疏: 数量=11 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='多轮闲聊' × length_category='中' × difficulty='低' 样本稀疏: 数量=11 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='多轮闲聊' × length_category='中' × difficulty='中' 样本稀疏: 数量=7 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='QA问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=7 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='QA问答' × length_category='短' × difficulty='低' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='角色扮演' × length_category='短' × difficulty='低' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='QA问答' × length_category='短' × difficulty='中' 样本稀疏: 数量=2 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='多轮闲聊' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='知识问答' × length_category='短' × difficulty='低' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='QA问答' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='代码生成' × length_category='中' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='QA问答' × length_category='短' × difficulty='低' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='多轮闲聊' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='知识问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    }
+  ],
+  "split_info": {},
+  "plot_paths": [],
+  "config": {
+    "length_short_max": 200,
+    "length_long_min": 1000,
+    "cross_min_count": 100
+  }
+}

@@ -1,0 +1,19 @@
+============================================================
+Data Packing & Version Management Report
+============================================================
+Timestamp         : 20260214_082425
+Input file        : /tmp/tmpy3a2tp83/input.jsonl
+Output path       : /tmp/tmpy3a2tp83/output.parquet
+Output format     : parquet
+Version tag       : qwen3-test
+
+--- Summary ---
+Total input samples       : 5
+Chat template applied     : True
+Model ID                  : Qwen/Qwen3-8B
+Packing enabled           : True
+Samples after packing     : 1
+Packing ratio             : 5:1 (5.00x)
+Tokenization enabled      : True
+Max sequence length       : 512
+Final sample count        : 1

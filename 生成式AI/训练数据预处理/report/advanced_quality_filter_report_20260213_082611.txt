@@ -1,0 +1,57 @@
+============================================================
+  Advanced Quality Filter — Processing Report
+============================================================
+
+Timestamp : 20260213_082611
+Input     : test_samples_moderation.jsonl
+Output    : ./zh_mixed_filtered.jsonl
+
+----------------------------------------
+  Active Filter Methods
+----------------------------------------
+  * empty_turns (空消息过滤)
+  * repeated_assistant (重复助手回复过滤)
+  * role_alternation (角色交替检查)
+  * truncation (截断检测)
+  * turn_count (轮次数量过滤, min=2, max=100)
+  * user_low_info (用户低信息量过滤, max_ratio=0.6)
+  * stalling (助手重复内容过滤, max_repeat_ratio=0.5)
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 18
+  Kept samples    : 17
+  Filtered samples: 1
+  Keep rate       : 94.44%
+  Filter rate     : 5.56%
+
+----------------------------------------
+  Filter Reasons Breakdown
+----------------------------------------
+  stalling                                 :      1  (100.0%)
+
+----------------------------------------
+  Filtered Sample Examples (up to 3 per reason)
+----------------------------------------
+
+  [stalling] (1 filtered)
+    Example 1:
+      user: 帮我写一封邮件给李华，他的邮箱是lihua_hr@company.com
+      assistant: 好的，以下是邮件草稿：
+
+收件人：lihua_hr@company.com
+主题：工作安排确认
+
+李华你好，
+
+关于下周的项目会议安排，我想确认一下时间和地点。
+请回复确认，谢谢。
+
+此致
+敬礼
+      user: 对了，把我的联系方式也加上：我叫王小红，手机15900001111，住在北京市海淀区中关村南大街5号院3号楼601室
+
+============================================================
+  End of Report
+============================================================

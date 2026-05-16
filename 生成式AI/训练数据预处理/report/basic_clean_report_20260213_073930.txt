@@ -1,0 +1,273 @@
+============================================================
+  Basic Clean LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_073930
+Input     : ./daily-dialog-bedrock-all.jsonl
+Output    : ./daily-dialog-bedrock-cleaned.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 10249
+  Kept samples    : 10197
+  Filtered samples: 52
+  Keep rate       : 99.49%
+  Filter rate     : 0.51%
+
+----------------------------------------
+  Filter Reasons Breakdown
+----------------------------------------
+  ad_keyword@msg0                          :      5  (9.62%)
+  high_punctuation_ratio@msg3              :      5  (9.62%)
+  high_punctuation_ratio@msg4              :      5  (9.62%)
+  high_punctuation_ratio@msg2              :      4  (7.69%)
+  high_punctuation_ratio@msg8              :      4  (7.69%)
+  high_punctuation_ratio@msg0              :      4  (7.69%)
+  ad_keyword@msg1                          :      3  (5.77%)
+  contains_url@msg4                        :      2  (3.85%)
+  high_punctuation_ratio@msg6              :      2  (3.85%)
+  purely_numeric@msg10                     :      2  (3.85%)
+  high_punctuation_ratio@msg11             :      2  (3.85%)
+  high_punctuation_ratio@msg18             :      1  (1.92%)
+  mostly_uppercase@msg9                    :      1  (1.92%)
+  high_punctuation_ratio@msg15             :      1  (1.92%)
+  high_punctuation_ratio@msg7              :      1  (1.92%)
+  mostly_uppercase@msg3                    :      1  (1.92%)
+  purely_numeric@msg2                      :      1  (1.92%)
+  contains_url@msg3                        :      1  (1.92%)
+  high_punctuation_ratio@msg10             :      1  (1.92%)
+  high_punctuation_ratio@msg5              :      1  (1.92%)
+  high_punctuation_ratio@msg1              :      1  (1.92%)
+  high_punctuation_ratio@msg17             :      1  (1.92%)
+  ad_keyword@msg3                          :      1  (1.92%)
+  message_length@msg5                      :      1  (1.92%)
+  contains_url@msg1                        :      1  (1.92%)
+
+----------------------------------------
+  Filtered Sample Examples (up to 3 per reason)
+----------------------------------------
+
+  [ad_keyword@msg0] (5 filtered)
+    Example 1:
+      user: So click here , then up to the top .
+      assistant: Er ... Hum ... Got it .
+      user: Then open that window . Yeah , that one .
+    Example 2:
+      user: So click here , then up to the top .
+      assistant: Er ... Hum ... Got it .
+      user: Then open that window.Yeah , that one .
+    Example 3:
+      user: What magazine do you want to subscribe for ?
+      assistant: Fitness Consultant .
+      user: OK , Fitness Consultant . How many subscriptions do you want ?
+
+  [high_punctuation_ratio@msg3] (5 filtered)
+    Example 1:
+      user: Are you Miss Thou Ping ?
+      assistant: Yes . I am Thou Ping .
+      user: How do you spell you first name ?
+    Example 2:
+      user: Yeah ?
+      assistant: I've never used this place before.Can you give me some idea what I need to do ?
+      user: You just put quarters in the machines.It ' s easy .
+    Example 3:
+      user: Mike ! Look at the floor !
+      assistant: What's wrong with it ?
+      user: What's wrong with it ? It's filthy !
+
+  [high_punctuation_ratio@msg4] (5 filtered)
+    Example 1:
+      user: What's your new girlfriend like ?
+      assistant: Katherine ? Well , she's good at languages .
+      user: Does she know how to speak Spanish ?
+    Example 2:
+      user: Can you tell me something about financial aid ?
+      assistant: What exactly ?
+      user: How to apply for it ?
+    Example 3:
+      user: Hi Isabel ! You wanted to see me ?
+      assistant: Yes Anthony , come on in . Have a seat .
+      user: Is everything okay ? You seem a bit preoccupied .
+
+  [high_punctuation_ratio@msg2] (4 filtered)
+    Example 1:
+      user: Wei , you look really tired .
+      assistant: Yes , I didn ’ t finish work until 9:00 pm .
+      user: 9:00 !
+    Example 2:
+      user: Good afternoon . I have a reservation under the name of Hilton .
+      assistant: Could you spell that , please ?
+      user: Sure . It's H-I-L-T-O-N .
+    Example 3:
+      user: Sure ! Are you okay ? You seem a bit worried.What ’ s on your mind ?
+      assistant: We need to talk .
+      user: Okay ...
+
+  [high_punctuation_ratio@msg8] (4 filtered)
+    Example 1:
+      user: I hate school !
+      assistant: why ? What happened ?
+      user: I messed up my mid-term exam so badly today !
+    Example 2:
+      user: Caroline Menzies speaking .
+      assistant: Could I speak to Diana Curzon ?
+      user: I'm afraid she's in a meeting at the moment . Who's speaking ?
+    Example 3:
+      user: That sounds great . I'm absolutely starving ! What kind of food are you in the mood for ?
+      assistant: I'd love something spicy . Maybe we could get some Sichuan hotpot .
+      user: You are a woman after my own heart . I don't know many people who can handle spicy food . Are you su...
+
+  [high_punctuation_ratio@msg0] (4 filtered)
+    Example 1:
+      user: Oh , no ...
+      assistant: Aren't they cool ? I like the settings .
+      user: Jen , is there someone you're not telling me about ?
+    Example 2:
+      user: Oh , hey ...
+      assistant: What are you doing in this neighbourhood ? Do you live around here ?
+      user: Actually , my office is right around the corner .
+    Example 3:
+      user: Oh , hey ...
+      assistant: What are you doing in this neighbourhood ? Do you live around here ?
+      user: Actually , my office is right around the corner .
+
+  [ad_keyword@msg1] (3 filtered)
+    Example 1:
+      user: What is your hobby ?
+      assistant: I spend most of my spare time reading . And I subscribe to various newspapers , magazines and period...
+    Example 2:
+      user: Yes , it is . It has some really good articles in it .
+      assistant: I know . I have been a subscriber for the past two years .
+      user: I didn't know that . How much does it cost to subscribe ?
+    Example 3:
+      user: Hello , there . I've just started using your net banking and I'm looking for some information about ...
+      assistant: I see . The Fund Trading System of our Net Banking deals with both trading and information . If you ...
+
+  [contains_url@msg4] (2 filtered)
+    Example 1:
+      user: Sure . What do you want to find ?
+      assistant: I want to find information on World War Two .
+      user: Well , can you be more specific ? There are a lot of websites about that .
+    Example 2:
+      user: Have you tried the Internet ?
+      assistant: No , not yet . Can you find a good price there ?
+      user: Wow , you really live in the Stone Age , Mom .
+
+  [high_punctuation_ratio@msg6] (2 filtered)
+    Example 1:
+      user: Sure , honey , we ’ re talking now , aren ’ t we ?
+      assistant: You know what I mean .
+      user: Yeah . I know .
+    Example 2:
+      user: Sure , honey , we ’ re talking now , aren ’ t we ?
+      assistant: You know what I mean .
+      user: Yeah . I know .
+
+  [purely_numeric@msg10] (2 filtered)
+    Example 1:
+      user: Could I speak to Mr Wood , please ?
+      assistant: I'll see a piece available , who should I say is calling , please ?
+      user: John eng
+    Example 2:
+      user: Could I speak to Mr Wood , please ?
+      assistant: I'll see a piece available , who should I say is calling , please ?
+      user: John eng
+
+  [high_punctuation_ratio@msg11] (2 filtered)
+    Example 1:
+      user: hello , this is the International Student Office . My name is Leah . How may I help you ?
+      assistant: I'd like to speak to the Ms . Collins , please .
+      user: ok . Can I ask who is calling , please ?
+    Example 2:
+      user: Hello , this is the International Student Office . My name is Leah . How may I help you ?
+      assistant: I'd like to speak to the Ms . Collins , please .
+      user: Ok . Can I ask who is calling , please ?
+
+  [high_punctuation_ratio@msg18] (1 filtered)
+    Example 1:
+      user: How can I help you ?
+      assistant: I seem to have lost my train ticket .
+      user: What ’ s your destination ?
+
+  [mostly_uppercase@msg9] (1 filtered)
+    Example 1:
+      user: Rebecca Johnson speaking .
+      assistant: I'd like to speak to someone in your Accounts Department , please .
+      user: Just a moment ... I'm afraid there's nobody there right now . Could I take a message ?
+
+  [high_punctuation_ratio@msg15] (1 filtered)
+    Example 1:
+      user: Royal Hotel , can I help you ?
+      assistant: Yes . I urgently need a room for tomorrow night , and do you have any vacancies ?
+      user: Yes , we have . What kind of room would you like ?
+
+  [high_punctuation_ratio@msg7] (1 filtered)
+    Example 1:
+      user: Yes ! Yes ! And yes ! Jared , of course I ’ ll marry you !
+      assistant: Oh , Babe , I can ’ t wait to spend the rest of my life with you ! I can ’ t wait for all the advent...
+      user: Oh , Jared ! I can ’ t wait for our wedding ! I hope you don ’ t mind , but I ’ Ve already chosen a ...
+
+  [mostly_uppercase@msg3] (1 filtered)
+    Example 1:
+      user: Sorry , Tom , can you say that last bit again please ? We didn ’ t get that .
+      assistant: Oh , OK , I said ( XXXXXXXXXX ) on time .
+      user: Sorry Tom , We're having problems hearing you here . It ’ s a bit hissy . Can you hear us ?
+
+  [purely_numeric@msg2] (1 filtered)
+    Example 1:
+      user: Why ? We just got here .
+      assistant: I know , but it's 12
+      user: 12
+
+  [contains_url@msg3] (1 filtered)
+    Example 1:
+      user: Of course . He is now 50 years old . And he started out studying alembics , singing , dancing and ma...
+      assistant: You know only one aspect of him . Do you know what he would do in the kitchen ?
+      user: I have no idea . Tell me .
+
+  [high_punctuation_ratio@msg10] (1 filtered)
+    Example 1:
+      user: By credit card .
+      assistant: Both rooms on the same card ?
+      user: Yes .
+
+  [high_punctuation_ratio@msg5] (1 filtered)
+    Example 1:
+      user: Good morning.May I help you ?
+      assistant: Yes . I'm looking for an apartment . I'd like two bedrooms .
+      user: All right . Have a seat , please.Let me ask you a few questions.First of all , may I have your name ...
+
+  [high_punctuation_ratio@msg1] (1 filtered)
+    Example 1:
+      user: Well ... I told them not to come . I made a reservation just for the two of us . I thought we could ...
+      assistant: Oh ... why ?
+      user: Jennifer , there ’ s something I wanna ask you .
+
+  [high_punctuation_ratio@msg17] (1 filtered)
+    Example 1:
+      user: We have to pick up Conrad before the party .
+      assistant: Alright , no problem .
+      user: We're supposed to meet him at Cal's Bar at 10
+
+  [ad_keyword@msg3] (1 filtered)
+    Example 1:
+      user: And the cover is great ! The colors are brilliant !
+      assistant: Give me a break . You don't care about the colors . You just like the hot babe on the cover .
+      user: OK , you got me . So , do you have a subscription ?
+
+  [message_length@msg5] (1 filtered)
+    Example 1:
+      user: Shogun Restaurant of Pasadena .
+      assistant: Hi , could you help me ? I need to make a dinner reservation .
+      user: I can help you if you can just tell me what evening you like the reservation for .
+
+  [contains_url@msg1] (1 filtered)
+    Example 1:
+      user: How do I set up an E-mail account ?
+      assistant: Oh , that's easy . Go to www.onxiu.cn . Now , click on the link with the picture of an envelope .
+      user: Which link ?
+
+============================================================
+  End of Report
+============================================================

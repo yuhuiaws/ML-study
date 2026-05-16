@@ -1,0 +1,44 @@
+============================================================
+  Basic Dedup LLM SFT Data — Processing Report
+============================================================
+
+Timestamp : 20260213_075504
+Input     : ./zh_mixed_cleaned.jsonl
+Output    : /tmp/test_dedup_out.jsonl
+
+----------------------------------------
+  Sample Statistics
+----------------------------------------
+  Total samples   : 99
+  Final kept      : 99
+  Total removed   : 0
+  Dedup rate      : 0.0%
+
+----------------------------------------
+  Per-Stage Breakdown
+----------------------------------------
+
+  [exact]
+    Method description : SHA-256 exact hash: concatenate all message texts, compute SHA-256 digest, group samples with identical hashes. Duplicate reason: texts are character-for-character identical.
+    Input count        : 99
+    Output count       : 99
+    Duplicate groups   : 0
+    Removed            : 0
+
+  [overlap]
+    Method description : Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.
+    Input count        : 99
+    Output count       : 99
+    Duplicate groups   : 0
+    Removed            : 0
+
+  [lsh]
+    Method description : MinHash LSH: 128 permutations, 16 bands × 8 rows. Candidate pairs from banding, verified with Jaccard >= 0.70. Duplicate reason: high estimated Jaccard similarity of character 3-gram sets.
+    Input count        : 99
+    Output count       : 99
+    Duplicate groups   : 0
+    Removed            : 0
+
+============================================================
+  End of Report
+============================================================

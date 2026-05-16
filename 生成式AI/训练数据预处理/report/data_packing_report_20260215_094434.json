@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260215_094434",
+  "input_file": "/tmp/tmplw4vj2jc/input.jsonl",
+  "output_path": "/tmp/tmplw4vj2jc/output.parquet",
+  "output_format": "parquet",
+  "version_tag": "",
+  "summary": {
+    "total_input_samples": 2,
+    "chat_template_applied": true,
+    "model_id": "Qwen/Qwen3-8B",
+    "packing_enabled": true,
+    "samples_after_packing": 1,
+    "packing_ratio": "2:1 (2.00x)",
+    "tokenization_enabled": true,
+    "max_seq_len": 256,
+    "final_sample_count": 1
+  },
+  "config": {
+    "enable_chat_template": true,
+    "enable_packing": true,
+    "enable_tokenization": true,
+    "max_seq_len": 256,
+    "packing_separator": "",
+    "drop_short_tail": false,
+    "min_packing_ratio": 0.5,
+    "parquet_compression": "snappy",
+    "add_generation_prompt": false,
+    "version_tag": ""
+  }
+}

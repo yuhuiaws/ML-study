@@ -1,0 +1,153 @@
+{
+  "timestamp": "20260213_080850",
+  "input_file": "test_duplicates.jsonl",
+  "output_file": "./zh_mixed_deduped.jsonl",
+  "summary": {
+    "total_samples": 43,
+    "final_kept": 37,
+    "total_removed": 6,
+    "dedup_rate": 13.95
+  },
+  "stages": [
+    {
+      "method": "exact",
+      "method_description": "SHA-256 exact hash: concatenate all message texts, compute SHA-256 digest, group samples with identical hashes. Duplicate reason: texts are character-for-character identical.",
+      "input_count": 43,
+      "output_count": 43,
+      "duplicate_groups": 0,
+      "removed": 0
+    },
+    {
+      "method": "overlap",
+      "method_description": "Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.",
+      "input_count": 43,
+      "output_count": 37,
+      "duplicate_groups": 3,
+      "removed": 6
+    },
+    {
+      "method": "lsh",
+      "method_description": "MinHash LSH: 128 permutations, 16 bands × 8 rows. Candidate pairs from banding, verified with Jaccard >= 0.70. Duplicate reason: high estimated Jaccard similarity of character 3-gram sets.",
+      "input_count": 37,
+      "output_count": 37,
+      "duplicate_groups": 0,
+      "removed": 0
+    }
+  ],
+  "duplicate_groups": [
+    {
+      "method": "overlap",
+      "duplicate_reason": "Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.",
+      "group_id": 1,
+      "member_count": 3,
+      "member_indices": [
+        6,
+        8,
+        24
+      ],
+      "scoring_method": "LLM",
+      "scores": {
+        "6": 2.25,
+        "8": 2.25,
+        "24": 2.28
+      },
+      "kept_index": 24,
+      "removed_indices": [
+        6,
+        8
+      ],
+      "text_preview": "什么是深度学习？它和机器学习有什么区别？\n深度学习是机器学习的一个子领域,它利用多层神经网络来模拟人脑的学习机制。深度学习在图像识别、自然语言处理和语音识别等领域取得了巨大的突破。主流的深度学习框架包括TensorFlow、PyTorch和Keras。要入门深度学习,推荐先学习Python编程和线性代数的基本概念。",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "什么是深度学习？它和机器学习有什么区别？"
+        },
+        {
+          "role": "assistant",
+          "text": "深度学习是机器学习的一个子领域,它利用多层神经网络来模拟人脑的学习机制。深度学习在图像识别、自然语言处理和语音识别等领域取得了巨大的突破。主流的深度学习框架包括TensorFlow、PyTorch和Keras。要入门深度学习,推荐先学习Py"
+        }
+      ]
+    },
+    {
+      "method": "overlap",
+      "duplicate_reason": "Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.",
+      "group_id": 2,
+      "member_count": 3,
+      "member_indices": [
+        14,
+        18,
+        28
+      ],
+      "scoring_method": "LLM",
+      "scores": {
+        "14": 2.38,
+        "18": 2.29,
+        "28": 2.29
+      },
+      "kept_index": 14,
+      "removed_indices": [
+        18,
+        28
+      ],
+      "text_preview": "如何学好编程？有什么建议？\n要学好编程,首先需要选择一门适合初学者的语言,例如Python或JavaScript。然后通过大量的练习来巩固基础知识,包括变量、循环、函数和数据结构。建议每天坚持写代码,参加开源项目,阅读优秀的代码库。遇到问题时善于利用搜索引擎和技术社区,勇于尝试。编程是一项需要长期积累的技能,保持耐心和好奇心很重要。",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "如何学好编程？有什么建议？"
+        },
+        {
+          "role": "assistant",
+          "text": "要学好编程,首先需要选择一门适合初学者的语言,例如Python或JavaScript。然后通过大量的练习来巩固基础知识,包括变量、循环、函数和数据结构。建议每天坚持写代码,参加开源项目,阅读优秀的代码库。遇到问题时善于利用搜索引擎和技术社区"
+        }
+      ]
+    },
+    {
+      "method": "overlap",
+      "duplicate_reason": "Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.",
+      "group_id": 3,
+      "member_count": 3,
+      "member_indices": [
+        17,
+        25,
+        33
+      ],
+      "scoring_method": "LLM",
+      "scores": {
+        "17": 2.32,
+        "25": 2.3,
+        "33": 2.3
+      },
+      "kept_index": 33,
+      "removed_indices": [
+        17,
+        25
+      ],
+      "text_preview": "Linux操作系统有什么特点？\nLinux是一个开源的操作系统内核,由Linus Torvalds在1991年首次发布。它广泛应用于服务器、嵌入式设备和超级计算机领域。常见的Linux发行版包括Ubuntu、CentOS、Debian和Fedora。学习Linux对于从事后端开发和运维工作非常重要,建议从基本命令开始学起。",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "Linux操作系统有什么特点？"
+        },
+        {
+          "role": "assistant",
+          "text": "Linux是一个开源的操作系统内核,由Linus Torvalds在1991年首次发布。它广泛应用于服务器、嵌入式设备和超级计算机领域。常见的Linux发行版包括Ubuntu、CentOS、Debian和Fedora。学习Linux对于从事"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "enable_exact": true,
+    "enable_overlap": true,
+    "enable_lsh": true,
+    "ngram_size": 3,
+    "overlap_threshold": 0.7,
+    "minhash_num_perm": 128,
+    "minhash_bands": 16,
+    "minhash_rows": 8,
+    "minhash_threshold": 0.7,
+    "scoring_method": "llm",
+    "weight_completeness": 0.4,
+    "weight_info_density": 0.6,
+    "seed": 42
+  }
+}

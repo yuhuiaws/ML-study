@@ -1,0 +1,156 @@
+{
+  "total_samples": 1,
+  "language_distribution": {
+    "total_samples": 1,
+    "distribution": {
+      "中文": {
+        "count": 1,
+        "percentage": 100.0,
+        "total_chars": 5
+      }
+    }
+  },
+  "task_distribution": {
+    "total_samples": 1,
+    "distribution": {
+      "QA问答": {
+        "count": 1,
+        "percentage": 100.0
+      }
+    },
+    "multi_turn_count": 0,
+    "multi_turn_percentage": 0.0
+  },
+  "length_distribution": {
+    "input": {
+      "mean": 2.0,
+      "min": 2,
+      "max": 2,
+      "percentiles": {
+        "P10": 2,
+        "P25": 2,
+        "P50": 2,
+        "P75": 2,
+        "P90": 2,
+        "P99": 2
+      }
+    },
+    "output": {
+      "mean": 2.0,
+      "min": 2,
+      "max": 2,
+      "percentiles": {
+        "P10": 2,
+        "P25": 2,
+        "P50": 2,
+        "P75": 2,
+        "P90": 2,
+        "P99": 2
+      }
+    },
+    "total": {
+      "mean": 5.0,
+      "min": 5,
+      "max": 5,
+      "percentiles": {
+        "P10": 5,
+        "P25": 5,
+        "P50": 5,
+        "P75": 5,
+        "P90": 5,
+        "P99": 5
+      }
+    }
+  },
+  "difficulty_distribution": {
+    "total_samples": 1,
+    "distribution": {
+      "低": {
+        "count": 1,
+        "percentage": 100.0
+      }
+    }
+  },
+  "length_category_distribution": {
+    "total_samples": 1,
+    "distribution": {
+      "短": {
+        "count": 1,
+        "percentage": 100.0
+      }
+    }
+  },
+  "cross_distribution_4d": {
+    "dimensions": [
+      "language",
+      "task_type",
+      "length_category",
+      "difficulty"
+    ],
+    "cells": [
+      {
+        "language": "中文",
+        "task_type": "QA问答",
+        "length_category": "短",
+        "difficulty": "低",
+        "count": 1
+      }
+    ],
+    "total_samples": 1,
+    "num_cells": 1
+  },
+  "alerts": [
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "多轮对话占比过低: 0.0% (<20.0%). 建议补充多轮对话数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 'QA问答' 占比过高: 100.0% (>50.0%). 分布偏斜，建议下采样或补充其他类型。"
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '低' 占比过高: 实际=100.0%, 目标=30.0%, 偏差=70.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '中' 占比过低: 实际=0.0%, 目标=50.0%, 偏差=50.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '高' 占比过低: 实际=0.0%, 目标=20.0%, 偏差=20.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '短' 占比过高: 实际=100.0%, 目标=25.0%, 偏差=75.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '中' 占比过低: 实际=0.0%, 目标=50.0%, 偏差=50.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '长' 占比过低: 实际=0.0%, 目标=25.0%, 偏差=25.0% (>15.0%). "
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='QA问答' × length_category='短' × difficulty='低' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    }
+  ],
+  "split_info": {},
+  "plot_paths": [],
+  "config": {
+    "length_short_max": 200,
+    "length_long_min": 1000,
+    "cross_min_count": 100
+  }
+}

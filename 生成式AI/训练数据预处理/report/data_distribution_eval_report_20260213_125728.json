@@ -1,0 +1,251 @@
+{
+  "total_samples": 18,
+  "language_distribution": {
+    "total_samples": 18,
+    "distribution": {
+      "中文": {
+        "count": 12,
+        "percentage": 66.67,
+        "total_chars": 5199
+      },
+      "中英混合": {
+        "count": 6,
+        "percentage": 33.33,
+        "total_chars": 2364
+      }
+    }
+  },
+  "task_distribution": {
+    "total_samples": 18,
+    "distribution": {
+      "知识问答": {
+        "count": 14,
+        "percentage": 77.78
+      },
+      "代码生成": {
+        "count": 4,
+        "percentage": 22.22
+      }
+    },
+    "multi_turn_count": 18,
+    "multi_turn_percentage": 100.0
+  },
+  "length_distribution": {
+    "input": {
+      "mean": 43.11,
+      "min": 23,
+      "max": 108,
+      "percentiles": {
+        "P10": 27.7,
+        "P25": 29.75,
+        "P50": 37.0,
+        "P75": 45.25,
+        "P90": 63.500000000000014,
+        "P99": 103.40999999999995
+      }
+    },
+    "output": {
+      "mean": 376.06,
+      "min": 148,
+      "max": 920,
+      "percentiles": {
+        "P10": 192.0,
+        "P25": 226.25,
+        "P50": 359.5,
+        "P75": 429.75,
+        "P90": 575.2,
+        "P99": 868.9999999999995
+      }
+    },
+    "total": {
+      "mean": 420.17,
+      "min": 192,
+      "max": 1002,
+      "percentiles": {
+        "P10": 221.70000000000002,
+        "P25": 251.75,
+        "P50": 395.0,
+        "P75": 475.25,
+        "P90": 668.6,
+        "P99": 946.7499999999994
+      }
+    }
+  },
+  "difficulty_distribution": {
+    "total_samples": 18,
+    "distribution": {
+      "中": {
+        "count": 18,
+        "percentage": 100.0
+      }
+    }
+  },
+  "length_category_distribution": {
+    "total_samples": 18,
+    "distribution": {
+      "中": {
+        "count": 16,
+        "percentage": 88.89
+      },
+      "长": {
+        "count": 1,
+        "percentage": 5.56
+      },
+      "短": {
+        "count": 1,
+        "percentage": 5.56
+      }
+    }
+  },
+  "cross_distribution_4d": {
+    "dimensions": [
+      "language",
+      "task_type",
+      "length_category",
+      "difficulty"
+    ],
+    "cells": [
+      {
+        "language": "中文",
+        "task_type": "知识问答",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 9
+      },
+      {
+        "language": "中英混合",
+        "task_type": "知识问答",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 3
+      },
+      {
+        "language": "中英混合",
+        "task_type": "代码生成",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 3
+      },
+      {
+        "language": "中文",
+        "task_type": "代码生成",
+        "length_category": "中",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中文",
+        "task_type": "知识问答",
+        "length_category": "长",
+        "difficulty": "中",
+        "count": 1
+      },
+      {
+        "language": "中文",
+        "task_type": "知识问答",
+        "length_category": "短",
+        "difficulty": "中",
+        "count": 1
+      }
+    ],
+    "total_samples": 18,
+    "num_cells": 6
+  },
+  "alerts": [
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '知识问答' 占比过高: 77.78% (>50.0%). 分布偏斜，建议下采样或补充其他类型。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '知识问答' 样本不足: 数量=14 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "task",
+      "message": "任务类型 '代码生成' 样本不足: 数量=4 (<2000). 建议补充数据。"
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '低' 占比过低: 实际=0.0%, 目标=30.0%, 偏差=30.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '中' 占比过高: 实际=100.0%, 目标=50.0%, 偏差=50.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "difficulty",
+      "message": "难度 '高' 占比过低: 实际=0.0%, 目标=20.0%, 偏差=20.0% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '短' 占比过低: 实际=5.56%, 目标=25.0%, 偏差=19.4% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '中' 占比过高: 实际=88.89%, 目标=50.0%, 偏差=38.9% (>15.0%). "
+    },
+    {
+      "level": "warning",
+      "dimension": "length_category",
+      "message": "长度类别 '长' 占比过低: 实际=5.56%, 目标=25.0%, 偏差=19.4% (>15.0%). "
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='知识问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=9 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='知识问答' × length_category='中' × difficulty='中' 样本稀疏: 数量=3 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中英混合' × task_type='代码生成' × length_category='中' × difficulty='中' 样本稀疏: 数量=3 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='代码生成' × length_category='中' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='知识问答' × length_category='长' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    },
+    {
+      "level": "info",
+      "dimension": "language×task_type×length_category×difficulty",
+      "message": "language='中文' × task_type='知识问答' × length_category='短' × difficulty='中' 样本稀疏: 数量=1 (<100). 交叉维度可能需要补充。"
+    }
+  ],
+  "split_info": {},
+  "plot_paths": [
+    "./distribution_plots/language_distribution.png",
+    "./distribution_plots/task_distribution.png",
+    "./distribution_plots/difficulty_distribution.png",
+    "./distribution_plots/length_category_distribution.png",
+    "./distribution_plots/input_length_histogram.png",
+    "./distribution_plots/output_length_histogram.png",
+    "./distribution_plots/cross_language_task_type.png",
+    "./distribution_plots/cross_language_difficulty.png",
+    "./distribution_plots/cross_language_length_category.png",
+    "./distribution_plots/cross_task_type_difficulty.png",
+    "./distribution_plots/cross_task_type_length_category.png",
+    "./distribution_plots/cross_difficulty_length_category.png"
+  ],
+  "config": {
+    "length_short_max": 200,
+    "length_long_min": 1000,
+    "cross_min_count": 100
+  }
+}

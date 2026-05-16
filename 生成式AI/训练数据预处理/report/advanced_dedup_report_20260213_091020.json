@@ -1,0 +1,66 @@
+{
+  "timestamp": "20260213_091020",
+  "input_file": "/tmp/tmpi92jpam0/in.jsonl",
+  "output_file": "/tmp/tmpi92jpam0/out.jsonl",
+  "summary": {
+    "total_samples": 3,
+    "final_kept": 2,
+    "total_removed": 1,
+    "dedup_rate": 33.33
+  },
+  "stages": [
+    {
+      "method": "full_sample_embedding_dedup",
+      "method_description": "Cohere Embed Multilingual v3 full-text embedding dedup: concatenate all message texts per conversation, embed via Bedrock Cohere, cluster by cosine similarity (threshold >= 0.9), keep best-scored per cluster. Duplicate reason: semantically similar full conversations.",
+      "input_count": 3,
+      "output_count": 2,
+      "dup_groups": 1,
+      "removed": 1
+    }
+  ],
+  "duplicate_groups": [
+    {
+      "method": "full_sample_dedup",
+      "group_id": 1,
+      "member_count": 2,
+      "member_indices": [
+        0,
+        1
+      ],
+      "scoring_method": "heuristic",
+      "scores": {
+        "0": 1.19,
+        "1": 1.64
+      },
+      "kept_index": 1,
+      "removed_indices": [
+        0
+      ],
+      "text_preview": "What is Python?\nPython is a great general-purpose high-level programming language used widely.",
+      "conversation_preview": [
+        {
+          "role": "user",
+          "text": "What is Python?"
+        },
+        {
+          "role": "assistant",
+          "text": "Python is a great general-purpose high-level programming language used widely."
+        }
+      ]
+    }
+  ],
+  "config": {
+    "enable_full_sample_dedup": true,
+    "enable_input_dedup": false,
+    "embed_model_id": "cohere.embed-multilingual-v3",
+    "embed_batch_size": 96,
+    "full_sample_threshold": 0.9,
+    "input_threshold": 0.7,
+    "scoring_method": "heuristic",
+    "judge_model_id": "us.anthropic.claude-opus-4-6-v1",
+    "weight_completeness": 0.4,
+    "weight_info_density": 0.6,
+    "multi_turn_weight_mode": "linear_increasing",
+    "bedrock_region": "us-east-1"
+  }
+}

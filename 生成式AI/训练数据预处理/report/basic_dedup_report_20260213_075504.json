@@ -1,0 +1,53 @@
+{
+  "timestamp": "20260213_075504",
+  "input_file": "./zh_mixed_cleaned.jsonl",
+  "output_file": "/tmp/test_dedup_out.jsonl",
+  "summary": {
+    "total_samples": 99,
+    "final_kept": 99,
+    "total_removed": 0,
+    "dedup_rate": 0.0
+  },
+  "stages": [
+    {
+      "method": "exact",
+      "method_description": "SHA-256 exact hash: concatenate all message texts, compute SHA-256 digest, group samples with identical hashes. Duplicate reason: texts are character-for-character identical.",
+      "input_count": 99,
+      "output_count": 99,
+      "duplicate_groups": 0,
+      "removed": 0
+    },
+    {
+      "method": "overlap",
+      "method_description": "Character 3-gram overlap ratio: compute pairwise |A∩B|/min(|A|,|B|) for all surviving samples. Duplicate when ratio >= 0.70. Duplicate reason: high character n-gram overlap between texts.",
+      "input_count": 99,
+      "output_count": 99,
+      "duplicate_groups": 0,
+      "removed": 0
+    },
+    {
+      "method": "lsh",
+      "method_description": "MinHash LSH: 128 permutations, 16 bands × 8 rows. Candidate pairs from banding, verified with Jaccard >= 0.70. Duplicate reason: high estimated Jaccard similarity of character 3-gram sets.",
+      "input_count": 99,
+      "output_count": 99,
+      "duplicate_groups": 0,
+      "removed": 0
+    }
+  ],
+  "duplicate_groups": [],
+  "config": {
+    "enable_exact": true,
+    "enable_overlap": true,
+    "enable_lsh": true,
+    "ngram_size": 3,
+    "overlap_threshold": 0.7,
+    "minhash_num_perm": 128,
+    "minhash_bands": 16,
+    "minhash_rows": 8,
+    "minhash_threshold": 0.7,
+    "scoring_method": "heuristic",
+    "weight_completeness": 0.4,
+    "weight_info_density": 0.6,
+    "seed": 42
+  }
+}

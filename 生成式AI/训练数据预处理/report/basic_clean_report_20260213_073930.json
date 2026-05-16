@@ -1,0 +1,807 @@
+{
+  "timestamp": "20260213_073930",
+  "input_file": "./daily-dialog-bedrock-all.jsonl",
+  "output_file": "./daily-dialog-bedrock-cleaned.jsonl",
+  "summary": {
+    "total_samples": 10249,
+    "kept_samples": 10197,
+    "filtered_samples": 52,
+    "keep_rate": 99.49,
+    "filter_rate": 0.51
+  },
+  "filter_reasons": [
+    {
+      "reason": "ad_keyword@msg0",
+      "count": 5,
+      "percentage": 9.62,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "So click here , then up to the top ."
+          },
+          {
+            "role": "assistant",
+            "text": "Er ... Hum ... Got it ."
+          },
+          {
+            "role": "user",
+            "text": "Then open that window . Yeah , that one ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "So click here , then up to the top ."
+          },
+          {
+            "role": "assistant",
+            "text": "Er ... Hum ... Got it ."
+          },
+          {
+            "role": "user",
+            "text": "Then open that window.Yeah , that one ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "What magazine do you want to subscribe for ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Fitness Consultant ."
+          },
+          {
+            "role": "user",
+            "text": "OK , Fitness Consultant . How many subscriptions do you want ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg3",
+      "count": 5,
+      "percentage": 9.62,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Are you Miss Thou Ping ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Yes . I am Thou Ping ."
+          },
+          {
+            "role": "user",
+            "text": "How do you spell you first name ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Yeah ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I've never used this place before.Can you give me some idea what I need to do ?"
+          },
+          {
+            "role": "user",
+            "text": "You just put quarters in the machines.It ' s easy ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Mike ! Look at the floor !"
+          },
+          {
+            "role": "assistant",
+            "text": "What's wrong with it ?"
+          },
+          {
+            "role": "user",
+            "text": "What's wrong with it ? It's filthy !"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg4",
+      "count": 5,
+      "percentage": 9.62,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "What's your new girlfriend like ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Katherine ? Well , she's good at languages ."
+          },
+          {
+            "role": "user",
+            "text": "Does she know how to speak Spanish ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Can you tell me something about financial aid ?"
+          },
+          {
+            "role": "assistant",
+            "text": "What exactly ?"
+          },
+          {
+            "role": "user",
+            "text": "How to apply for it ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Hi Isabel ! You wanted to see me ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Yes Anthony , come on in . Have a seat ."
+          },
+          {
+            "role": "user",
+            "text": "Is everything okay ? You seem a bit preoccupied ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg2",
+      "count": 4,
+      "percentage": 7.69,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Wei , you look really tired ."
+          },
+          {
+            "role": "assistant",
+            "text": "Yes , I didn ’ t finish work until 9:00 pm ."
+          },
+          {
+            "role": "user",
+            "text": "9:00 !"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Good afternoon . I have a reservation under the name of Hilton ."
+          },
+          {
+            "role": "assistant",
+            "text": "Could you spell that , please ?"
+          },
+          {
+            "role": "user",
+            "text": "Sure . It's H-I-L-T-O-N ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Sure ! Are you okay ? You seem a bit worried.What ’ s on your mind ?"
+          },
+          {
+            "role": "assistant",
+            "text": "We need to talk ."
+          },
+          {
+            "role": "user",
+            "text": "Okay ..."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg8",
+      "count": 4,
+      "percentage": 7.69,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "I hate school !"
+          },
+          {
+            "role": "assistant",
+            "text": "why ? What happened ?"
+          },
+          {
+            "role": "user",
+            "text": "I messed up my mid-term exam so badly today !"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Caroline Menzies speaking ."
+          },
+          {
+            "role": "assistant",
+            "text": "Could I speak to Diana Curzon ?"
+          },
+          {
+            "role": "user",
+            "text": "I'm afraid she's in a meeting at the moment . Who's speaking ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "That sounds great . I'm absolutely starving ! What kind of food are you in the mood for ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I'd love something spicy . Maybe we could get some Sichuan hotpot ."
+          },
+          {
+            "role": "user",
+            "text": "You are a woman after my own heart . I don't know many people who can handle spicy food . Are you su..."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg0",
+      "count": 4,
+      "percentage": 7.69,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Oh , no ..."
+          },
+          {
+            "role": "assistant",
+            "text": "Aren't they cool ? I like the settings ."
+          },
+          {
+            "role": "user",
+            "text": "Jen , is there someone you're not telling me about ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Oh , hey ..."
+          },
+          {
+            "role": "assistant",
+            "text": "What are you doing in this neighbourhood ? Do you live around here ?"
+          },
+          {
+            "role": "user",
+            "text": "Actually , my office is right around the corner ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Oh , hey ..."
+          },
+          {
+            "role": "assistant",
+            "text": "What are you doing in this neighbourhood ? Do you live around here ?"
+          },
+          {
+            "role": "user",
+            "text": "Actually , my office is right around the corner ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "ad_keyword@msg1",
+      "count": 3,
+      "percentage": 5.77,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "What is your hobby ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I spend most of my spare time reading . And I subscribe to various newspapers , magazines and period..."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Yes , it is . It has some really good articles in it ."
+          },
+          {
+            "role": "assistant",
+            "text": "I know . I have been a subscriber for the past two years ."
+          },
+          {
+            "role": "user",
+            "text": "I didn't know that . How much does it cost to subscribe ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Hello , there . I've just started using your net banking and I'm looking for some information about ..."
+          },
+          {
+            "role": "assistant",
+            "text": "I see . The Fund Trading System of our Net Banking deals with both trading and information . If you ..."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "contains_url@msg4",
+      "count": 2,
+      "percentage": 3.85,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Sure . What do you want to find ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I want to find information on World War Two ."
+          },
+          {
+            "role": "user",
+            "text": "Well , can you be more specific ? There are a lot of websites about that ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Have you tried the Internet ?"
+          },
+          {
+            "role": "assistant",
+            "text": "No , not yet . Can you find a good price there ?"
+          },
+          {
+            "role": "user",
+            "text": "Wow , you really live in the Stone Age , Mom ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg6",
+      "count": 2,
+      "percentage": 3.85,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Sure , honey , we ’ re talking now , aren ’ t we ?"
+          },
+          {
+            "role": "assistant",
+            "text": "You know what I mean ."
+          },
+          {
+            "role": "user",
+            "text": "Yeah . I know ."
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Sure , honey , we ’ re talking now , aren ’ t we ?"
+          },
+          {
+            "role": "assistant",
+            "text": "You know what I mean ."
+          },
+          {
+            "role": "user",
+            "text": "Yeah . I know ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "purely_numeric@msg10",
+      "count": 2,
+      "percentage": 3.85,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Could I speak to Mr Wood , please ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I'll see a piece available , who should I say is calling , please ?"
+          },
+          {
+            "role": "user",
+            "text": "John eng"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Could I speak to Mr Wood , please ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I'll see a piece available , who should I say is calling , please ?"
+          },
+          {
+            "role": "user",
+            "text": "John eng"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg11",
+      "count": 2,
+      "percentage": 3.85,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "hello , this is the International Student Office . My name is Leah . How may I help you ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I'd like to speak to the Ms . Collins , please ."
+          },
+          {
+            "role": "user",
+            "text": "ok . Can I ask who is calling , please ?"
+          }
+        ],
+        [
+          {
+            "role": "user",
+            "text": "Hello , this is the International Student Office . My name is Leah . How may I help you ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I'd like to speak to the Ms . Collins , please ."
+          },
+          {
+            "role": "user",
+            "text": "Ok . Can I ask who is calling , please ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg18",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "How can I help you ?"
+          },
+          {
+            "role": "assistant",
+            "text": "I seem to have lost my train ticket ."
+          },
+          {
+            "role": "user",
+            "text": "What ’ s your destination ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "mostly_uppercase@msg9",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Rebecca Johnson speaking ."
+          },
+          {
+            "role": "assistant",
+            "text": "I'd like to speak to someone in your Accounts Department , please ."
+          },
+          {
+            "role": "user",
+            "text": "Just a moment ... I'm afraid there's nobody there right now . Could I take a message ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg15",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Royal Hotel , can I help you ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Yes . I urgently need a room for tomorrow night , and do you have any vacancies ?"
+          },
+          {
+            "role": "user",
+            "text": "Yes , we have . What kind of room would you like ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg7",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Yes ! Yes ! And yes ! Jared , of course I ’ ll marry you !"
+          },
+          {
+            "role": "assistant",
+            "text": "Oh , Babe , I can ’ t wait to spend the rest of my life with you ! I can ’ t wait for all the advent..."
+          },
+          {
+            "role": "user",
+            "text": "Oh , Jared ! I can ’ t wait for our wedding ! I hope you don ’ t mind , but I ’ Ve already chosen a ..."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "mostly_uppercase@msg3",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Sorry , Tom , can you say that last bit again please ? We didn ’ t get that ."
+          },
+          {
+            "role": "assistant",
+            "text": "Oh , OK , I said ( XXXXXXXXXX ) on time ."
+          },
+          {
+            "role": "user",
+            "text": "Sorry Tom , We're having problems hearing you here . It ’ s a bit hissy . Can you hear us ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "purely_numeric@msg2",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Why ? We just got here ."
+          },
+          {
+            "role": "assistant",
+            "text": "I know , but it's 12"
+          },
+          {
+            "role": "user",
+            "text": "12"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "contains_url@msg3",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Of course . He is now 50 years old . And he started out studying alembics , singing , dancing and ma..."
+          },
+          {
+            "role": "assistant",
+            "text": "You know only one aspect of him . Do you know what he would do in the kitchen ?"
+          },
+          {
+            "role": "user",
+            "text": "I have no idea . Tell me ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg10",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "By credit card ."
+          },
+          {
+            "role": "assistant",
+            "text": "Both rooms on the same card ?"
+          },
+          {
+            "role": "user",
+            "text": "Yes ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg5",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Good morning.May I help you ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Yes . I'm looking for an apartment . I'd like two bedrooms ."
+          },
+          {
+            "role": "user",
+            "text": "All right . Have a seat , please.Let me ask you a few questions.First of all , may I have your name ..."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg1",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Well ... I told them not to come . I made a reservation just for the two of us . I thought we could ..."
+          },
+          {
+            "role": "assistant",
+            "text": "Oh ... why ?"
+          },
+          {
+            "role": "user",
+            "text": "Jennifer , there ’ s something I wanna ask you ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "high_punctuation_ratio@msg17",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "We have to pick up Conrad before the party ."
+          },
+          {
+            "role": "assistant",
+            "text": "Alright , no problem ."
+          },
+          {
+            "role": "user",
+            "text": "We're supposed to meet him at Cal's Bar at 10"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "ad_keyword@msg3",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "And the cover is great ! The colors are brilliant !"
+          },
+          {
+            "role": "assistant",
+            "text": "Give me a break . You don't care about the colors . You just like the hot babe on the cover ."
+          },
+          {
+            "role": "user",
+            "text": "OK , you got me . So , do you have a subscription ?"
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "message_length@msg5",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "Shogun Restaurant of Pasadena ."
+          },
+          {
+            "role": "assistant",
+            "text": "Hi , could you help me ? I need to make a dinner reservation ."
+          },
+          {
+            "role": "user",
+            "text": "I can help you if you can just tell me what evening you like the reservation for ."
+          }
+        ]
+      ]
+    },
+    {
+      "reason": "contains_url@msg1",
+      "count": 1,
+      "percentage": 1.92,
+      "examples": [
+        [
+          {
+            "role": "user",
+            "text": "How do I set up an E-mail account ?"
+          },
+          {
+            "role": "assistant",
+            "text": "Oh , that's easy . Go to www.onxiu.cn . Now , click on the link with the picture of an envelope ."
+          },
+          {
+            "role": "user",
+            "text": "Which link ?"
+          }
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "fullwidth_to_halfwidth": true,
+    "normalize_whitespace": true,
+    "nfd_normalize": true,
+    "traditional_to_simplified": false,
+    "to_lowercase": false,
+    "remove_punctuation": false,
+    "filter_language": true,
+    "allowed_scripts": [
+      "CJK",
+      "LATIN"
+    ],
+    "filter_punctuation": true,
+    "max_punct_ratio": 0.3,
+    "filter_length": true,
+    "min_msg_len": 2,
+    "max_msg_len": 2000,
+    "filter_uppercase": true,
+    "max_upper_ratio": 0.7,
+    "filter_numeric": true,
+    "filter_urls": true,
+    "filter_keywords": true,
+    "filter_short_login": true
+  }
+}

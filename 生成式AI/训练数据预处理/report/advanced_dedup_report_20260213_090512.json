@@ -1,0 +1,27 @@
+{
+  "timestamp": "20260213_090512",
+  "input_file": "/tmp/tmp1f9ynpp5/in.jsonl",
+  "output_file": "/tmp/tmp1f9ynpp5/out.jsonl",
+  "summary": {
+    "total_samples": 0,
+    "final_kept": 0,
+    "total_removed": 0,
+    "dedup_rate": 0.0
+  },
+  "stages": [],
+  "duplicate_groups": [],
+  "config": {
+    "enable_full_sample_dedup": true,
+    "enable_input_dedup": true,
+    "embed_model_id": "cohere.embed-multilingual-v3",
+    "embed_batch_size": 96,
+    "full_sample_threshold": 0.85,
+    "input_threshold": 0.7,
+    "scoring_method": "heuristic",
+    "judge_model_id": "us.anthropic.claude-opus-4-6-v1",
+    "weight_completeness": 0.4,
+    "weight_info_density": 0.6,
+    "multi_turn_weight_mode": "linear_increasing",
+    "bedrock_region": "us-east-1"
+  }
+}
