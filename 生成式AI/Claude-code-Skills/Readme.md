@@ -1,5 +1,7 @@
 GPU Infra as Claude code skills
 
+> **[English Version / 英文版本](./README_English.md)**
+
 * 当前这里提供了几个打包的skill：
    * sglang-deepseek-non-PD.skill ------ 这个skill使用Non-PD部署方式，针对Deepseek-v3 FP8模型，使用单节点部署，2节点部署进行了实验。2节点部署使用了基于NCCL的，以及基于UCCL-EP的方式（使用Non-PD的uccl-ep方式来主要是做一下对比实验）。
    * sglang-deepseek-1p1d.skill ------ 这个skill使用1P1D部署方式，使用NIXL KV transfer engine的两个不同backend即libfabric backend和ucx backend来对比。
