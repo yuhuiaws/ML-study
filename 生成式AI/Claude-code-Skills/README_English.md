@@ -1,6 +1,6 @@
 # GPU Infra as Claude Code Skills
 
-A collection of Claude Code skills for deploying large language models (primarily DeepSeek-V3/V4, Kimi2.5, Qwen3, mimo-v2-flash) on AWS GPU infrastructure using SGLang, VLLM, and Megatron-LM. These skills automate cluster provisioning, model deployment, benchmarking, and PD (Prefill-Decode) disaggregation configurations.
+A collection of Claude Code skills for deploying and training large language models (primarily DeepSeek-V3/V4, Kimi2.5, Qwen3, mimo-v2-flash) on AWS GPU infrastructure using SGLang, VLLM, and Megatron-LM. These skills automate cluster provisioning, model deployment, model training, benchmarking, and PD (Prefill-Decode) disaggregation configurations.
 
 ## Skills Overview
 
@@ -15,7 +15,7 @@ A collection of Claude Code skills for deploying large language models (primaril
 | `sglang-single-node-kimi25.skill` | Single-node SGLang benchmark experiments for Kimi2.5. |
 | `sglang-mimo-v2-flash.skill` | Deploys mimo-v2-flash on an existing AWS SageMaker HyperPod cluster. Includes single-node, PD (1P1D), and MTP-enabled deployments. PD uses NIXL libfabric backend for KV transfer, based on SGLang v0.5.6.post2 with custom patches (embedded in the skill's Python scripts). |
 
-### EKS Cluster & Deployment Skills
+### EKS Cluster & Model Deployment / Model Training Skills
 
 | Skill | Description |
 |-------|-------------|
@@ -45,30 +45,6 @@ A collection of Claude Code skills for deploying large language models (primaril
 |------|-------------|
 | `GPU Infra As Claude Code Skills.pptx` | Slide deck covering the overall approach and architecture. |
 
-## Key Findings for DeepSeek-V3
-
-Based on the tested scenarios and configurations:
-
-### 1. Single-Node Deployment — Best Performance per Cost
-
-- **1-node EP8 TP8** achieves **687 tok/s** with **TPOT 12ms** on a single machine.
-- Note: This does not necessarily mean single-node is always the most cost-effective — exhaustive testing of all XP x XD combinations has not been performed.
-
-### 2. Best 2-Node Deployment
-
-- **1P1D + NIXL Libfabric backend + NCCL** delivers the best overall performance among 2-node configurations.
-
-### 3. Best 4-Node (2P2D) Deployment
-
-- **2P2D with UCCL-EP** outperforms **2P2D with NCCL**.
-  - UCCL-EP / DeepEP performs best when combined with PD disaggregation.
-
-### 4. Optimal 2P2D Architecture
-
-- **Independent prefill (single-node TP=8) + UCCL-EP low-latency decode** outperforms **UCCL-EP normal mode between prefill nodes + UCCL-EP low-latency between decode nodes**.
-- This aligns with Ant Group's recommended deployment architecture for DeepSeek-V3 on 4x H20 nodes:
-  - Independent prefill (TP=8, single node) + FlashMLA decode is the optimal 2P2D architecture — it avoids cross-node communication overhead during prefill and leverages FlashMLA to optimize MLA decode.
-- The configuration (independent prefill + UCCL-EP between decode nodes) is similar to [Ant Group's recommendation](https://github.com/antgroup/sglang/pull/4), with differences being: prefix cache disabled, no speculative decoding parameters, H200 GPUs used, and EFA + UCCL-EP for networking.
 
 ## How to Use
 
