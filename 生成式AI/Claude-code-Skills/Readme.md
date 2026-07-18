@@ -7,6 +7,7 @@ GPU Infra as Claude code skills
    * sglang-deepseek-1p1d.skill ------ 这个skill使用1P1D部署方式，使用NIXL KV transfer engine的两个不同backend即libfabric backend和ucx backend来对比。
    * sglang-2p2d-nccl-nixl.skill ------- 这个skill使用2P2D部署方式，严格说是4台GUP实例，2个P之间通过NCCL通信，2个D之间通过NCCL通信。
    * sglang-2p2d-ucclep-nixl.skill ------- 这个skill使用2P2D部署，两种方式：一种是2个P之间单独独立（不需要通信），2个D之间使用UCCL-EP来做all2all通信；另一种是2个P之间使用UCCL-EP来做all2all通信，2个D之间也使用UCCL-EP来做all2all通信。
+   * sglang-deepseek-2p2d-deepep-nixl.skill ------- 这个skill使用2P2D部署方式，对比了三种MoE All-to-All EP通信方案：（1）DeepEP-V1方案——Prefill和Decode都使用DeepEP（NVSHMEM libfabric/EFA）；（2）UCCL-EP方案——Prefill和Decode都使用UCCL-EP；（3）Hybrid混合方案——Prefill节点使用DeepEP-V1 normal mode，Decode节点使用UCCL-EP low latency mode。所有方案使用NIXL LIBFABRIC做KV transfer。
    * sglang-single-node-kimi25.skill ------ 这个skill使用单节点对Kimi2.5进行了一些SGLang的benchmark实验。
    * sagemaker-hyperpod-on-eks-setup.skill ---- 这个skill是借助Claude code来在AWS Global region创建Sagemaker hyperpod on EKS集群。
    * ec2-g7e-docker-sglang-2p2d.skill ------ 这个skill是在AWS GPU EC2 G7e.48xlarge 实例上，基于docker container做4节点2P2D部署。
