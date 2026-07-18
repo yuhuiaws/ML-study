@@ -15,6 +15,13 @@ A collection of Claude Code skills for deploying and training large language mod
 | `sglang-single-node-kimi25.skill` | Single-node SGLang benchmark experiments for Kimi2.5. |
 | `sglang-mimo-v2-flash.skill` | Deploys mimo-v2-flash on an existing AWS SageMaker HyperPod cluster. Includes single-node, PD (1P1D), and MTP-enabled deployments. PD uses NIXL libfabric backend for KV transfer, based on SGLang v0.5.6.post2 with custom patches (embedded in the skill's Python scripts). |
 
+### vLLM Deployment Skills
+
+| Skill | Description |
+|-------|-------------|
+| `deploy-vllm-hyperpod-2p1d.skill` | Deploys DeepSeek-V3 using native vLLM (no Ray, no HyperPod Inference Operator) on AWS SageMaker HyperPod EKS with 3 x ml.p5en.48xlarge (H200). 2P1D topology: Prefill spans 2 nodes with TP16/EP16, Decode on 1 node with TP8/EP8. Uses NIXL LIBFABRIC for KV transfer, UCCL-EP for MoE All2All (Prefill: deepep_high_throughput, Decode: deepep_low_latency). Best config (CUDA Graph + UCCL-EP inflight=16) achieves 404.74 tok/s output throughput — 6x over eager baseline, TPOT reduced from 107ms to 14.6ms (7.3x improvement). |
+| `Deepseek-v4-Pro-VLLM-skills.zip` | Deploys DeepSeek-V4-Pro using VLLM on AWS H200 GPU instances (Non-PD and PD disaggregation). |
+
 ### EKS Cluster & Model Deployment / Model Training Skills
 
 | Skill | Description |
@@ -31,13 +38,6 @@ A collection of Claude Code skills for deploying and training large language mod
 |-------|-------------|
 | `ec2-g7e-docker-sglang-2p2d.skill` | Deploys a 4-node 2P2D configuration on AWS G7e.48xlarge EC2 instances using Docker containers. |
 | `sagemaker-hyperpod-on-eks-setup.skill` | Automates creation of a SageMaker HyperPod on EKS cluster in AWS Global regions via Claude Code. |
-
-### DeepSeek-V4-Pro Skills
-
-| Skill | Description |
-|-------|-------------|
-| `Deepseek-v4-Pro-VLLM-skills.zip` | Deploys DeepSeek-V4-Pro using VLLM on AWS H200 GPU instances (Non-PD and PD disaggregation). |
-| `eks-h200-deepseek-v4-pd.skill` | Deploys DeepSeek-V4-Pro using SGLang on AWS H200 instances (Non-PD and PD). |
 
 ### Presentation
 
