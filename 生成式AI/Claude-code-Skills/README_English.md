@@ -12,6 +12,7 @@ A collection of Claude Code skills for deploying and training large language mod
 | `sglang-deepseek-1p1d.skill` | 1P1D (1 Prefill + 1 Decode) deployment using NIXL KV transfer engine, comparing two backends: libfabric and UCX. |
 | `sglang-2p2d-nccl-nixl.skill` | 2P2D deployment across 4 GPU instances. Communication between 2 prefill nodes uses NCCL; communication between 2 decode nodes also uses NCCL. |
 | `sglang-2p2d-ucclep-nixl.skill` | 2P2D deployment with two variants: (1) Independent prefill nodes (no inter-P communication) + UCCL-EP all2all between decode nodes; (2) UCCL-EP all2all between both prefill nodes and decode nodes. |
+| `sglang-deepseek-2p2d-deepep-nixl.skill` | 2P2D deployment comparing three MoE All-to-All EP communication backends: (1) DeepEP-V1 — both Prefill and Decode use DeepEP (NVSHMEM libfabric/EFA); (2) UCCL-EP — both Prefill and Decode use UCCL-EP; (3) Hybrid — Prefill uses DeepEP-V1 normal mode, Decode uses UCCL-EP low latency mode. All variants use NIXL LIBFABRIC for KV transfer. |
 | `sglang-single-node-kimi25.skill` | Single-node SGLang benchmark experiments for Kimi2.5. |
 | `sglang-mimo-v2-flash.skill` | Deploys mimo-v2-flash on an existing AWS SageMaker HyperPod cluster. Includes single-node, PD (1P1D), and MTP-enabled deployments. PD uses NIXL libfabric backend for KV transfer, based on SGLang v0.5.6.post2 with custom patches (embedded in the skill's Python scripts). |
 
