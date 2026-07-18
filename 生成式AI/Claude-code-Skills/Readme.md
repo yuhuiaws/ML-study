@@ -16,6 +16,7 @@ GPU Infra as Claude code skills
    * eks-b200.skill ----- EKS + p6-b200.48xlarge 集群搭建与 DeepSeek-V3 671B FP8 推理部署（SGLang PD disaggregation 1P1D/2P1D/2P2D/1P2D，nixl LIBFABRIC over EFA RDMA），含 NCCL 测试、PyTorchJob 分布式训练及 13 个已知问题排障。
    * eks-h200-megatron-qwen3-235b-a22b.skill ----- 这个skill是在EKS HyperPod H200集群上使用Megatron-LM对Qwen3-235B-A22B（MoE, 128 experts, top-8）进行分布式训练。覆盖完整pipeline：HF模型下载、megatron-bridge checkpoint转换、训练数据准备、4节点32 GPU 5D并行训练（TP/PP/CP/EP/DP）。包含PlanD（TP4/PP1/CP8/EP32，seqlen为64K）和PlanE（TP4/PP2/CP2/EP16/DP2，seqlen为20K）两种并行方案，以及UCCL-EP flex vs NCCL alltoall dispatcher的性能对比（UCCL-EP在PlanE上有+12.7%吞吐优势，PlanD上+7.7%; 针对planE EP16，如果seqlen是48K，UCCL-EP相对NCCL EP超过20%+的吞吐优势以及大概18%+的时间优势即iteration/s更短）。
    * Deepseek-v4-Pro-VLLM-skills.zip和eks-h200-deepseek-v4-pd.skill ------ 这两个skill是针对Deepseek-v4-Pro分别使用SGLang和VLLM在AWS H200 GPU实例上进行部署的一些实践（包括了Non-PD和PD分离的方案）。
+   * deploy-vllm-hyperpod-2p1d.skill ------ 这个skill是在AWS SageMaker HyperPod EKS集群（3台ml.p5en.48xlarge H200实例）上使用原生vLLM（非Ray、非HyperPod Inference Operator）部署DeepSeek-V3的2P1D方案。Prefill跨2节点TP16/EP16，Decode单节点TP8/EP8，使用NIXL LIBFABRIC做KV transfer，UCCL-EP做MoE All2All（Prefill用deepep_high_throughput，Decode用deepep_low_latency）。Benchmark结果：最优配置（CUDA Graph + UCCL-EP inflight=16）达到404.74 tok/s输出吞吐，相比eager基线提升6x，TPOT从107ms降至14.6ms（7.3x改善）。
     
   
 * 小结 for Deepseek-v3（对于当前这个测试场景和已测试过的方案）：
@@ -31,5 +32,3 @@ GPU Infra as Claude code skills
             * 独立 prefill（TP=8 单节点）+ flashmla decode 是 2P2D 的最优架构，避免 prefill 跨节点通信开销，并利用 flashmla 优化 MLA decode。
         * 2P2D，P之间单独部署，D之间使用UCCL-EP，参数配置基本和蚂蚁(https://github.com/antgroup/sglang/pull/4)的一个建议类似：
             * 区别：disable prefix cache，没有使用speculative相关参数，使用的是H200 GPU，使用的EFA和UCCL-EP。
-   
-
